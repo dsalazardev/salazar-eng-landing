@@ -18,9 +18,9 @@
 
 - [x] 4.1 Ejecutar `pnpm astro check` y registrar la salida completa (0 errores) para el reporte
 - [x] 4.2 Ejecutar `pnpm build` y registrar la salida; inspeccionar el HTML/CSS: `id="proceso"` ×1 y `href="#proceso"` ×2 (tercera ancla viva), "07/ PROCESO", "Cómo trabajamos", tagline, los 4 títulos de paso, las 4 descripciones, numeración 01–04 en los nodos, única cifra "20 minutos", 0 iconos/CTA/diagramas, `aria-hidden` en nodos y línea, 0 `client:*`, único `<script>` = inline del navbar (245 B) y `global.css` intacto (git diff)
-- [ ] 4.3 Documentar la lista de verificaciones humanas pendientes del dueño (timeline horizontal y rail vertical, densidad en 1024 px, responsive 320→1440 sin overflow) para el reporte final (§06: no se levanta preview para verificar)
+- [x] 4.3 Documentar la lista de verificaciones humanas pendientes del dueño (timeline horizontal y rail vertical, densidad en 1024 px, responsive 320→1440 sin overflow) para el reporte final (§06: no se levanta preview para verificar)
 
 ## 5. Cierre
 
-- [ ] 5.1 Revisar `git status`/`git diff` para confirmar el alcance (`src/components/sections/Process.astro`, `src/pages/index.astro`) y commit `feat(process): timeline de 4 pasos con ancla #proceso`; verificar con `git show --stat HEAD`; los artefactos del change van en commit aparte `docs(openspec): add landing-process change artifacts`
-- [ ] 5.2 Redactar el reporte final del módulo: archivos creados/modificados, salidas completas de `pnpm astro check` y `pnpm build`, hallazgos de la inspección del HTML/CSS, verificaciones humanas pendientes, decisiones no cubiertas y problemas encontrados
+- [x] 5.1 Revisar `git status`/`git diff` para confirmar el alcance (`src/components/sections/Process.astro`, `src/pages/index.astro`) y commit `feat(process): timeline de 4 pasos con ancla #proceso`; verificar con `git show --stat HEAD`; los artefactos del change van en commit aparte `docs(openspec): add landing-process change artifacts`
+- [x] 5.2 Redactar el reporte final del módulo: archivos creados/modificados, salidas completas de `pnpm astro check` y `pnpm build`, hallazgos de la inspección del HTML/CSS, verificaciones humanas pendientes, decisiones no cubiertas y problemas encontrados
