@@ -1,0 +1,60 @@
+---
+import SectionLabel from '../ui/SectionLabel.astro';
+
+interface PainPoint {
+  problem: string;
+  answer: string;
+}
+
+const pains: PainPoint[] = [
+  {
+    problem: 'El sistema va lento y cada cambio rompe algo.',
+    answer: 'Arquitectura moderna + métricas antes/después',
+  },
+  {
+    problem: 'El equipo pierde horas en tareas manuales.',
+    answer: 'Automatización e IA aplicada en tu flujo real',
+  },
+  {
+    problem: 'Nuestros datos están, pero no sirven para decidir.',
+    answer: 'Copilotos con RAG sobre tus documentos',
+  },
+];
+---
+
+<section id="problema" class="relative">
+  <div class="problem-texture absolute inset-0 bg-blueprint-grid" aria-hidden="true"></div>
+
+  <div class="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+    <SectionLabel index="04" text="PROBLEMA" />
+
+    <div class="mt-6 grid gap-x-12 gap-y-2 pb-6 lg:grid-cols-2 lg:items-baseline">
+      <h2 class="text-2xl font-bold tracking-tight text-navy-900 sm:text-3xl">
+        El problema que escuchamos
+      </h2>
+      <span class="hidden font-mono text-xs tracking-wider text-steel-500 uppercase lg:block">
+        NUESTRA RESPUESTA
+      </span>
+    </div>
+
+    <ul class="border-b border-line">
+      {
+        pains.map((pain) => (
+          <li class="grid gap-3 border-t border-line py-8 lg:grid-cols-2 lg:gap-x-12">
+            <blockquote class="border-l-2 border-line pl-4 text-lg italic text-steel-500">
+              {pain.problem}
+            </blockquote>
+            <p class="text-lg font-semibold text-navy-900">{pain.answer}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style is:global>
+  .problem-texture {
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+  }
+</style>
