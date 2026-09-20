@@ -150,7 +150,19 @@ pnpm astro check            # Type-checking (TS strict)
 
 ---
 
-## 06. Referencias
+## 06. Reglas para agentes ejecutores — verificación sin bloqueo
+
+> **OBLIGATORIAS** para todo agente (OpenCode, Claude Code, Codex, Hermes) que implemente o verifique en este proyecto. Nacen de bloqueos reales: agentes que se quedan en ciclos de espera al levantar el preview para "verificar con el navegador".
+
+1. **Verifica SIN servidor.** La verificación de artefactos se hace por inspección directa del build: `grep`/lectura de `dist/index.html` y `dist/_astro/*.css` (scripts, reglas, tokens, assets hasheados). **NO levantes `astro preview` ni `astro dev` para verificar.**
+2. **Nunca esperes; nunca pares el flujo.** Si una tarea pide verificación "manual / visual / en preview": haz la parte automatizable (grep/inspección) y registra el resto como **"verificación humana pendiente del dueño"** en el reporte final. CONTINÚA hasta la última tarea.
+3. **El preview es del humano.** Solo se levanta si el dueño lo pide, o para una medición puntual con herramienta automatizable disponible — y se **detiene en el mismo paso** (`astro preview stop`).
+4. **Cero procesos en background al terminar.** Sin servidores ni watchers vivos al cerrar el turno.
+5. **Las verificaciones humanas se listan, no se intentan:** sección explícita al final del reporte, con instrucciones breves para el dueño.
+
+---
+
+## 07. Referencias
 
 - **Brief Técnico (fuente de verdad de copy y diseño):**
   `C:\Users\USUARIO\OneDrive\Escritorio\ARCHIVOS\ESCRITORIO\HV\AGENTE-HV-DANER-SALAZAR\OUTPUT\ANALISIS\BRIEF_LANDING_PAGE_SALAZAR_ENG.md`
