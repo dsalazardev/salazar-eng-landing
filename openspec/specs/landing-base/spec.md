@@ -82,14 +82,19 @@ Manrope (texto principal) y JetBrains Mono (etiquetas técnicas) SHALL servirse 
 - **WHEN** se usa `<Card interactive>`
 - **THEN** el contenedor cambia el borde en hover; sin `interactive` no cambia
 
-### Requirement: Build estático sin JavaScript de islas
+### Requirement: Build estático con presupuesto de JavaScript
 
-`pnpm build` SHALL completar y producir HTML estático cuya carga inicial no incluye JavaScript de islas (este change no añade componentes hidratados); el CSS construido SHALL incluir los tokens y utilidades generados desde el tema.
+`pnpm build` SHALL completar y producir HTML estático cuya carga inicial SHALL mantenerse por debajo de 10 KB de JavaScript — el script inline del navbar (245 B) más el loader de islas de Astro cuando existan islas — difiriendo cualquier runtime de framework hasta que su isla entre en el viewport (`client:visible`); el CSS construido SHALL incluir los tokens y utilidades generados desde el tema.
 
-#### Scenario: HTML sin scripts de islas
+#### Scenario: Carga inicial bajo presupuesto
 
-- **WHEN** se inspecciona el HTML construido de la única página de este change
-- **THEN** no contiene `<script>` de islas ni existe JavaScript asociado en `dist/`
+- **WHEN** se inspecciona el HTML construido con islas diferidas
+- **THEN** la carga inicial incluye únicamente el script inline del navbar y el loader de islas, sumando menos de 10 KB
+
+#### Scenario: Runtimes de islas diferidos
+
+- **WHEN** una isla hidratada con `client:visible` está fuera del viewport inicial
+- **THEN** el runtime del framework no forma parte de la carga inicial y se descarga solo al acercarse al viewport
 
 ### Requirement: Verificación de tipos limpia
 
