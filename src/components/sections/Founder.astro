@@ -1,0 +1,88 @@
+---
+import { Image } from 'astro:assets';
+import retrato from '../../assets/retrato-daner.png';
+import SectionLabel from '../ui/SectionLabel.astro';
+
+const credentials: string[] = [
+  'Ingeniería de Sistemas y Computación — Universidad de Caldas (en curso)',
+  'Experiencia comercial en equipos internacionales',
+  'Portafolio de proyectos públicos verificables',
+];
+---
+
+<section id="fundador" class="border-y border-line bg-white">
+  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+    <SectionLabel index="08" text="FUNDADOR" />
+
+    <h2 class="mt-6 text-2xl font-bold tracking-tight text-navy-900 sm:text-3xl">
+      Ingeniería primero. Marketing después.
+    </h2>
+
+    <div class="mt-10 grid gap-10 lg:grid-cols-12 lg:items-center">
+      <div class="lg:col-span-5">
+        <div class="relative overflow-hidden rounded-md border border-line">
+          <span
+            class="pointer-events-none absolute top-2 left-2 font-mono text-xs text-steel-500"
+            aria-hidden="true">+</span
+          >
+          <span
+            class="pointer-events-none absolute top-2 right-2 font-mono text-xs text-steel-500"
+            aria-hidden="true">+</span
+          >
+          <span
+            class="pointer-events-none absolute bottom-2 left-2 font-mono text-xs text-steel-500"
+            aria-hidden="true">+</span
+          >
+          <span
+            class="pointer-events-none absolute right-2 bottom-2 font-mono text-xs text-steel-500"
+            aria-hidden="true">+</span
+          >
+
+          <Image
+            src={retrato}
+            alt="Daner Salazar, fundador de SALAZAR Eng."
+            width={500}
+            height={751}
+            densities={[1, 2]}
+            format="webp"
+            loading="lazy"
+            class="aspect-[4/5] w-full object-cover object-top grayscale"
+          />
+        </div>
+      </div>
+
+      <div class="lg:col-span-7">
+        <p class="text-navy-900">
+          SALAZAR Eng. fue fundada por <strong>Daner Salazar</strong>, desarrollador de software y
+          estudiante de último año de Ingeniería de Sistemas y Computación, con experiencia
+          comercial en equipos internacionales. Especializado en arquitectura limpia, cloud (AWS) e
+          IA aplicada, Daner trabaja con una premisa:
+        </p>
+
+        <blockquote class="mt-6 border-l-2 border-line pl-4 text-lg italic text-steel-500">
+          el software es una inversión, no un gasto — cada proyecto se mide por el resultado de
+          negocio que produce.
+          <footer class="mt-2 font-mono text-xs tracking-wider text-steel-500 uppercase not-italic">
+            <cite>Daner Salazar</cite>
+          </footer>
+        </blockquote>
+
+        <p class="mt-6 font-semibold text-navy-900">Sin intermediarios, sin juniors rotando.</p>
+
+        <p class="mt-8 font-mono text-xs tracking-wider text-steel-500 uppercase">Credenciales</p>
+        <ul class="mt-3 flex flex-col gap-2">
+          {
+            credentials.map((item) => (
+              <li class="flex gap-2 text-sm text-steel-500">
+                <span class="font-mono text-line" aria-hidden="true">
+                  ·
+                </span>
+                <span>{item}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
