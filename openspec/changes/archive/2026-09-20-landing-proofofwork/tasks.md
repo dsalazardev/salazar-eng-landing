@@ -18,9 +18,9 @@
 
 - [x] 4.1 Ejecutar `pnpm astro check` y registrar la salida completa (0 errores) para el reporte
 - [x] 4.2 Ejecutar `pnpm build` y registrar la salida; inspeccionar el HTML/CSS: `id="casos"` ×1 y `href="#casos"` ×6 (ancla viva), h3 de los 3 casos presentes, métricas ① (`F1 0.99`, `Recall crítico 1.00`, `47 tests`), badge estado ②, badges de stack ①②③, links con `rel="noopener noreferrer"` + `target="_blank"`, 3 SVG con `role="img"` + `<title>`, ausencia de "asíncrona"/"Onna Digital", 0 `client:*`, único `<script>` = inline del navbar (245 B) y `global.css` intacto (git diff); grep tolerante a `>`/`&gt;` en el h2
-- [ ] 4.3 Documentar la lista de verificaciones humanas pendientes del dueño (layout alternado ①②③, legibilidad de los C4 en móvil, barrido responsive 320→1440 sin overflow) para el reporte final (§06: no se levanta preview para verificar)
+- [x] 4.3 Documentar la lista de verificaciones humanas pendientes del dueño (layout alternado ①②③, legibilidad de los C4 en móvil, barrido responsive 320→1440 sin overflow) para el reporte final (§06: no se levanta preview para verificar)
 
 ## 5. Cierre
 
-- [ ] 5.1 Revisar `git status`/`git diff` para confirmar el alcance (`src/components/sections/ProofOfWork.astro`, `src/components/ui/C4Diagram.astro`, `src/pages/index.astro`) y commit `feat(proofofwork): 3 tarjetas de evidencia con C4 inline y ancla #casos`; verificar con `git show --stat HEAD`; los artefactos del change van en commit aparte `docs(openspec): add landing-proofofwork change artifacts`
-- [ ] 5.2 Redactar el reporte final del módulo: archivos creados/modificados, salidas completas de `pnpm astro check` y `pnpm build`, hallazgos de la inspección del HTML/CSS, verificaciones humanas pendientes, decisiones no cubiertas y problemas encontrados
+- [x] 5.1 Revisar `git status`/`git diff` para confirmar el alcance (`src/components/sections/ProofOfWork.astro`, `src/components/ui/C4Diagram.astro`, `src/pages/index.astro`) y commit `feat(proofofwork): 3 tarjetas de evidencia con C4 inline y ancla #casos`; verificar con `git show --stat HEAD`; los artefactos del change van en commit aparte `docs(openspec): add landing-proofofwork change artifacts`
+- [x] 5.2 Redactar el reporte final del módulo: archivos creados/modificados, salidas completas de `pnpm astro check` y `pnpm build`, hallazgos de la inspección del HTML/CSS, verificaciones humanas pendientes, decisiones no cubiertas y problemas encontrados
