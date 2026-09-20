@@ -18,9 +18,9 @@
 
 - [x] 4.1 Ejecutar `pnpm astro check` y registrar la salida completa (0 errores) para el reporte
 - [x] 4.2 Ejecutar `pnpm build` y registrar la salida; inspeccionar el HTML/CSS: `id="fundador"` ×1, h2 lema, "desarrollador de software y estudiante de último año de Ingeniería de Sistemas y Computación", "Sistemas y Computación" ×2 (bio + credencial), las 3 credenciales, asset WebP hasheado de la foto con `srcset` de 2 densidades + `loading="lazy"` + `alt`, ausencia de "ingeniero de software"/"ingeniero senior", 0 enlaces sociales/CTA en la sección, 0 `client:*`, único `<script>` = inline del navbar (245 B) y `global.css` intacto (git diff)
-- [ ] 4.3 Documentar la lista de verificaciones humanas pendientes del dueño (encuadre 4:5 con rostro protegido, grayscale, marco con cruces, responsive 320→1440 sin overflow) para el reporte final (§06: no se levanta preview para verificar)
+- [x] 4.3 Documentar la lista de verificaciones humanas pendientes del dueño (encuadre 4:5 con rostro protegido, grayscale, marco con cruces, responsive 320→1440 sin overflow) para el reporte final (§06: no se levanta preview para verificar)
 
 ## 5. Cierre
 
-- [ ] 5.1 Revisar `git status`/`git diff` para confirmar el alcance (`src/components/sections/Founder.astro`, `src/assets/retrato-daner.png`, `src/pages/index.astro`) y commit `feat(founder): retrato, bio ejecutiva y credenciales verificables`; verificar con `git show --stat HEAD`; los artefactos del change van en commit aparte `docs(openspec): add landing-founder change artifacts`
-- [ ] 5.2 Redactar el reporte final del módulo: archivos creados/modificados, salidas completas de `pnpm astro check` y `pnpm build`, hallazgos de la inspección del HTML/CSS, verificaciones humanas pendientes, decisiones no cubiertas y problemas encontrados
+- [x] 5.1 Revisar `git status`/`git diff` para confirmar el alcance (`src/components/sections/Founder.astro`, `src/assets/retrato-daner.png`, `src/pages/index.astro`) y commit `feat(founder): retrato, bio ejecutiva y credenciales verificables`; verificar con `git show --stat HEAD`; los artefactos del change van en commit aparte `docs(openspec): add landing-founder change artifacts`
+- [x] 5.2 Redactar el reporte final del módulo: archivos creados/modificados, salidas completas de `pnpm astro check` y `pnpm build`, hallazgos de la inspección del HTML/CSS, verificaciones humanas pendientes, decisiones no cubiertas y problemas encontrados
