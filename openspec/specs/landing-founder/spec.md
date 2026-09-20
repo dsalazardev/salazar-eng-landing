@@ -54,7 +54,7 @@ La sección SHALL mostrar el retrato del fundador con escala de grises, en un sl
 
 ### Requirement: Jerarquía del copy
 
-La sección SHALL presentar en este orden: `<h2>` lema; bio con `<strong>Daner Salazar</strong>`; cita en `<blockquote>` con `<cite>Daner Salazar</cite>`; cierre "Sin intermediarios, sin juniors rotando."; label mono "CREDENCIALES" con la lista de 3 ítems.
+La sección SHALL presentar en este orden: `<h2>` lema; bio con `<strong>Daner Salazar</strong>`; cita en `<blockquote>` con `<cite>Daner Salazar</cite>`; cierre "Trabajas directamente conmigo: yo diseño y construyo tu arquitectura, garantizando consistencia técnica de principio a fin."; label mono "CREDENCIALES" con la lista de 3 ítems.
 
 #### Scenario: Orden de los elementos
 
