@@ -1,0 +1,74 @@
+---
+import { Image } from 'astro:assets';
+import isotipo from '../../assets/isotipo-se.png';
+import Button from '../ui/Button.astro';
+import Card from '../ui/Card.astro';
+import SectionLabel from '../ui/SectionLabel.astro';
+---
+
+<section
+  id="hero"
+  class="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:min-h-[calc(100svh-4rem)] lg:grid-cols-12 lg:items-center lg:gap-16 lg:py-24"
+>
+  <div class="lg:col-span-7">
+    <SectionLabel index="02" text="HERO" />
+
+    <h1
+      class="mt-6 text-4xl leading-[1.05] font-bold tracking-tight text-balance text-navy-900 sm:text-5xl lg:text-6xl"
+    >
+      Sistemas que escalan. IA que produce. Sin el overhead de una agencia.
+    </h1>
+
+    <p class="mt-6 max-w-2xl text-lg text-pretty text-steel-500">
+      SALAZAR Eng. es un estudio boutique de ingeniería: modernizamos sistemas legacy, construimos
+      plataformas fullstack de alto rendimiento e integramos IA aplicada (agentes, RAG,
+      automatización) — con arquitectura limpia y resultados medibles.
+    </p>
+
+    <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+      <Button variant="primary" size="lg" href="#contacto" class="w-full sm:w-auto">
+        <span class="sm:hidden">Agendar diagnóstico · 20 min</span>
+        <span class="hidden sm:inline">Agendar diagnóstico gratuito · 20 min</span>
+      </Button>
+      <Button variant="outline" size="lg" href="#casos" class="w-full sm:w-auto">
+        Ver casos de estudio →
+      </Button>
+    </div>
+
+    <p class="mt-6 font-mono text-xs tracking-wider text-steel-500 uppercase">
+      Respuesta en menos de 24 h · Remoto LATAM · Internacional
+    </p>
+  </div>
+
+  <div class="lg:col-span-5" aria-hidden="true">
+    <Card class="relative aspect-[4/3] overflow-hidden p-0">
+      <div class="absolute inset-0 bg-blueprint-grid"></div>
+      <div class="absolute right-0 bottom-0 h-1/3 w-1/2 bg-dot-pattern"></div>
+
+      <span class="absolute top-3 left-3 font-mono text-xs text-steel-500">+</span>
+      <span class="absolute top-3 right-3 font-mono text-xs text-steel-500">+</span>
+      <span class="absolute bottom-3 left-3 font-mono text-xs text-steel-500">+</span>
+      <span class="absolute bottom-3 right-3 font-mono text-xs text-steel-500">+</span>
+
+      <span class="absolute top-3 left-8 font-mono text-xs tracking-wider text-steel-500 uppercase">
+        SE-01 / ISOTIPO
+      </span>
+      <span class="absolute right-8 bottom-3 font-mono text-xs tracking-wider text-steel-500 uppercase">
+        GRID 30
+      </span>
+
+      <div class="relative flex h-full items-center justify-center">
+        {/* TODO: reemplazar el isotipo PNG por el SVG definitivo cuando el dueño exporte el vectorial (ARCHIVOS/LOGO/AI/ → Illustrator) */}
+        <Image
+          src={isotipo}
+          alt=""
+          width={272}
+          height={236}
+          densities={[1, 2]}
+          format="webp"
+          loading="eager"
+        />
+      </div>
+    </Card>
+  </div>
+</section>
