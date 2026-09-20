@@ -1,0 +1,123 @@
+---
+import Badge from '../ui/Badge.astro';
+import SectionLabel from '../ui/SectionLabel.astro';
+
+const stack: string[] = [
+  'Angular',
+  'React',
+  'NestJS',
+  'Spring Boot',
+  'Node.js',
+  'PHP',
+  'Python / FastAPI',
+  'PostgreSQL',
+  'MongoDB',
+  'AWS',
+  'Docker',
+  'Terraform',
+  'Pulumi',
+  'LangChain',
+  'Ollama',
+  'n8n',
+];
+---
+
+<section id="stack" class="border-y border-line">
+  <div class="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:py-12">
+    <SectionLabel index="03" text="STACK" />
+
+    <div class="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+      <h2 class="text-sm font-bold tracking-widest text-navy-900 uppercase">STACK DE PRODUCCIÓN</h2>
+      <p class="text-sm text-steel-500 italic">Tecnología elegida por resultados, no por moda.</p>
+    </div>
+  </div>
+
+  <div class="stack-marquee relative overflow-hidden py-2">
+    <input id="stack-pause" type="checkbox" class="peer sr-only" />
+    <label
+      for="stack-pause"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:right-4 focus:z-10 focus:rounded-sm focus:border focus:border-line focus:bg-surface focus:px-2 focus:py-1 focus:font-mono focus:text-xs focus:tracking-wider focus:text-navy-900 focus:uppercase"
+    >
+      Pausar animación
+    </label>
+
+    <div class="stack-track flex w-max">
+      <ul class="stack-copy flex gap-x-10 pr-10">
+        {
+          stack.map((tech) => (
+            <li>
+              <Badge class="whitespace-nowrap">{tech}</Badge>
+            </li>
+          ))
+        }
+      </ul>
+      <ul class="stack-copy flex gap-x-10 pr-10" aria-hidden="true">
+        {
+          stack.map((tech) => (
+            <li>
+              <Badge class="whitespace-nowrap">{tech}</Badge>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  #stack {
+    --stack-marquee-duration: 36s;
+  }
+
+  .stack-marquee {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  }
+
+  .stack-track {
+    animation: stack-marquee var(--stack-marquee-duration, 36s) linear infinite;
+    will-change: transform;
+  }
+
+  @keyframes stack-marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .stack-marquee:hover .stack-track,
+  .stack-marquee:focus-within .stack-track {
+    animation-play-state: paused;
+  }
+
+  #stack-pause:checked ~ .stack-track {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stack-track {
+      animation: none;
+    }
+
+    .stack-copy[aria-hidden='true'] {
+      display: none;
+    }
+
+    #stack .stack-track {
+      width: auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    #stack .stack-copy {
+      flex-wrap: wrap;
+      justify-content: center;
+      padding-right: 0;
+    }
+
+    #stack .stack-marquee {
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+  }
+</style>
