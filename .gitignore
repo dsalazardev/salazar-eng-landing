@@ -1,24 +1,41 @@
-# build output
+# ==========================================
+# Variables de Entorno y Secretos
+# ==========================================
+.env
+.env.*
+!.env.example
+
+# ==========================================
+# Compilación y Archivos Generados
+# ==========================================
 dist/
-# generated types
 .astro/
 
-# dependencies
+# ==========================================
+# Herramientas de IA, MCP y Pruebas
+# ==========================================
+.playwright-mcp/
+
+# ==========================================
+# Dependencias
+# ==========================================
 node_modules/
 
-# logs
+# ==========================================
+# Logs y Temporales
+# ==========================================
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+*.log
 
-
-# environment variables
-.env
-.env.production
-
-# macOS-specific files
+# ==========================================
+# Archivos del Sistema Operativo y Editor
+# ==========================================
 .DS_Store
-
-# jetbrains setting folder
+Thumbs.db
 .idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
