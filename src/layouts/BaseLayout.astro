@@ -38,6 +38,7 @@ const { title, description, ogImage = '/og-default.png' } = Astro.props;
     >
       Saltar al contenido
     </a>
+    <slot name="header" />
     <main id="contenido">
       <slot />
     </main>

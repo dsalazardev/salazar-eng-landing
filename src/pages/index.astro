@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/sections/Navbar.astro';
 import Button from '../components/ui/Button.astro';
 import Badge from '../components/ui/Badge.astro';
 import SectionLabel from '../components/ui/SectionLabel.astro';
@@ -10,6 +11,7 @@ import Card from '../components/ui/Card.astro';
   title="SALAZAR Eng. — Ingeniería de Software, Cloud e IA"
   description="Estudio boutique de ingeniería: modernizamos sistemas legacy, construimos plataformas fullstack de alto rendimiento e integramos IA aplicada."
 >
+  <Navbar slot="header" />
   <section class="mx-auto flex max-w-4xl flex-col gap-8 px-6 py-16">
     <SectionLabel index="00" text="SETUP" />
 
