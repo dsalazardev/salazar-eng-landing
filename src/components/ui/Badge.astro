@@ -1,0 +1,19 @@
+---
+import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const classes = twMerge(
+  clsx([
+    'font-mono text-xs uppercase tracking-wider text-steel-500 border border-line rounded-sm px-2.5 py-1',
+    className,
+  ]),
+);
+---
+
+<span class={classes}><slot /></span>

@@ -1,17 +1,43 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Badge from '../components/ui/Badge.astro';
+import SectionLabel from '../components/ui/SectionLabel.astro';
+import Card from '../components/ui/Card.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="SALAZAR Eng. — Ingeniería de Software, Cloud e IA"
+  description="Estudio boutique de ingeniería: modernizamos sistemas legacy, construimos plataformas fullstack de alto rendimiento e integramos IA aplicada."
+>
+  <section class="mx-auto flex max-w-4xl flex-col gap-8 px-6 py-16">
+    <SectionLabel index="00" text="SETUP" />
+
+    <h1 class="text-4xl font-bold">Sistema base operativo</h1>
+    <p class="text-steel-500">
+      Smoke test del Módulo 00: tokens, tipografías, texturas blueprint y primitivos UI.
+    </p>
+
+    <div class="flex flex-wrap gap-3">
+      <Button variant="primary">Primario</Button>
+      <Button variant="outline">Outline</Button>
+    </div>
+
+    <div class="flex flex-wrap gap-2">
+      <Badge>Astro 7</Badge>
+      <Badge>Tailwind v4</Badge>
+    </div>
+
+    <Card>
+      <p class="font-mono text-sm">JetBrains Mono OK</p>
+      <p class="text-sm">Manrope OK</p>
+    </Card>
+
+    <Card interactive>
+      <p class="text-steel-500">Card interactiva</p>
+    </Card>
+
+    <div class="bg-blueprint-grid h-24 rounded-md border border-line" aria-hidden="true"></div>
+    <div class="bg-dot-pattern h-24 rounded-md border border-line" aria-hidden="true"></div>
+  </section>
+</BaseLayout>

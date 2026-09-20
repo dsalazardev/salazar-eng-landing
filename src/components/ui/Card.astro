@@ -1,0 +1,21 @@
+---
+import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+interface Props {
+  interactive?: boolean;
+  class?: string;
+}
+
+const { interactive = false, class: className } = Astro.props;
+
+const classes = twMerge(
+  clsx([
+    'rounded-md border border-line bg-white p-6',
+    interactive && 'transition-colors hover:border-navy-900/30',
+    className,
+  ]),
+);
+---
+
+<div class={classes}><slot /></div>
