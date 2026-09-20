@@ -1,0 +1,151 @@
+---
+import Badge from '../ui/Badge.astro';
+import Button from '../ui/Button.astro';
+import Card from '../ui/Card.astro';
+import SectionLabel from '../ui/SectionLabel.astro';
+
+interface Extra {
+  label: string;
+  kind: 'badges' | 'lines';
+  items: string[];
+  metric?: string;
+}
+
+interface Service {
+  code: string;
+  title: string;
+  promise: string;
+  deliverables: string[];
+  extra: Extra;
+}
+
+const services: Service[] = [
+  {
+    code: 'S-01',
+    title: 'Desarrollo Fullstack a Medida',
+    promise:
+      'Web apps, APIs y sistemas de gestión construidos para tu operación exacta — no para la de todos.',
+    deliverables: [
+      'plataforma en producción',
+      'arquitectura documentada (C4)',
+      'código testeado',
+      'traspaso al equipo',
+    ],
+    extra: {
+      label: 'Stack',
+      kind: 'badges',
+      items: ['Angular/React', 'NestJS/FastAPI', 'PostgreSQL/MongoDB', 'AWS'],
+    },
+  },
+  {
+    code: 'S-02',
+    title: 'Modernización de Sistemas Legacy',
+    promise:
+      'Rescatamos sistemas lentos, frágiles o abandonados: migración a stacks modernos, refactor de arquitectura y optimización medida.',
+    deliverables: ['sistema migrado', 'informe antes/después', 'plan de escalado'],
+    extra: {
+      label: 'Prueba real',
+      kind: 'lines',
+      items: ['Consultas críticas optimizadas de segundos a <500 ms en producción.'],
+      metric: '<500 ms',
+    },
+  },
+  {
+    code: 'S-03',
+    title: 'IA Aplicada en Producción',
+    promise: 'Agentes, RAG y automatización donde generan retorno — no demos de laboratorio.',
+    deliverables: ['integración en tu producto/proceso', 'documentación', 'capacitación'],
+    extra: {
+      label: 'Casos',
+      kind: 'lines',
+      items: [
+        'copilotos internos con RAG',
+        'agentes que automatizan workflows (n8n/Python)',
+        'LLMs locales para datos que no pueden salir de tu infraestructura',
+      ],
+    },
+  },
+];
+
+const cardClass = (index: number) =>
+  index === 0 ? 'flex h-full flex-col lg:col-span-2 lg:p-8' : 'flex h-full flex-col';
+---
+
+<section id="servicios">
+  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+    <SectionLabel index="05" text="SERVICIOS" />
+
+    <h2 class="mt-6 text-2xl font-bold tracking-tight text-navy-900 sm:text-3xl">Servicios</h2>
+
+    <div class="mt-10 grid gap-6 lg:grid-cols-2 lg:gap-8">
+      {
+        services.map((service, index) => (
+          <Card class={cardClass(index)}>
+            <p class="font-mono text-xs tracking-wider text-steel-500 uppercase">{service.code}</p>
+            <h3 class={`mt-2 text-lg font-bold text-navy-900${index === 0 ? ' sm:text-xl' : ''}`}>
+              {service.title}
+            </h3>
+            <p class={`mt-3 text-navy-900${index === 0 ? ' text-lg' : ''}`}>{service.promise}</p>
+
+            <p class="mt-6 font-mono text-xs tracking-wider text-steel-500 uppercase">
+              Entregables
+            </p>
+            <ul class="mt-3 flex flex-col gap-2">
+              {service.deliverables.map((item) => (
+                <li class="flex gap-2 text-sm text-steel-500">
+                  <span class="font-mono text-line" aria-hidden="true">
+                    ·
+                  </span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <p class="mt-6 font-mono text-xs tracking-wider text-steel-500 uppercase">
+              {service.extra.label}
+            </p>
+            {service.extra.kind === 'badges' ? (
+              <div class="mt-3 flex flex-wrap gap-2">
+                {service.extra.items.map((item) => (
+                  <Badge class="whitespace-nowrap">{item}</Badge>
+                ))}
+              </div>
+            ) : (
+              <ul class="mt-3 flex flex-col gap-2">
+                {service.extra.items.map((item) => {
+                  const [before, after = ''] = service.extra.metric
+                    ? item.split(service.extra.metric)
+                    : [item, ''];
+                  return (
+                    <li class="flex gap-2 text-sm text-steel-500">
+                      {!service.extra.metric && (
+                        <span class="font-mono text-line" aria-hidden="true">
+                          ·
+                        </span>
+                      )}
+                      <span>
+                        {before}
+                        {service.extra.metric && (
+                          <span class="font-mono font-bold text-navy-900 whitespace-nowrap">
+                            {service.extra.metric}
+                          </span>
+                        )}
+                        {after}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+
+            <div class="mt-auto pt-8">
+              <Button variant="outline" size="md" href="#casos">
+                Ver casos de estudio →
+              </Button>
+            </div>
+          </Card>
+        ))
+      }
+    </div>
+  </div>
+</section>
