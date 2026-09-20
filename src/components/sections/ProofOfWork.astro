@@ -1,0 +1,177 @@
+---
+import Badge from '../ui/Badge.astro';
+import Card from '../ui/Card.astro';
+import C4Diagram from '../ui/C4Diagram.astro';
+import SectionLabel from '../ui/SectionLabel.astro';
+
+type DiagramVariant = 'telemetry' | 'doligestion' | 'microservices';
+
+interface CaseLink {
+  label: string;
+  href: string;
+}
+
+interface CaseMetric {
+  label: string;
+  kind: 'stats' | 'status';
+  items: string[];
+}
+
+interface Case {
+  id: DiagramVariant;
+  name: string;
+  challenge: string;
+  diagramTitle: string;
+  metric?: CaseMetric;
+  stack: string[];
+  links: CaseLink[];
+  loom?: string;
+  caseUrl?: string;
+}
+
+const cases: Case[] = [
+  {
+    id: 'telemetry',
+    name: 'Telemetry Heart AI',
+    challenge: 'de datos dispersos a agente clínico con RAG',
+    diagramTitle:
+      'Arquitectura de Telemetry Heart AI: sensor Wear OS, API FastAPI, agente RAG con LangGraph y ChromaDB, dashboard Angular y orquestación con n8n',
+    metric: {
+      label: 'Métrica',
+      kind: 'stats',
+      items: ['F1 0.99', 'Recall crítico 1.00', '47 tests'],
+    },
+    stack: ['Python', 'LangChain', 'n8n', 'IoT'],
+    links: [{ label: 'Repo →', href: 'https://github.com/dsalazardev/telemetry-heart-ai' }],
+  },
+  {
+    id: 'doligestion',
+    name: 'DoliGestión',
+    challenge: 'de deploys manuales frágiles hacia entregas estables (modernización en curso)',
+    diagramTitle:
+      'Proceso de modernización: de deploy manual frágil a pipeline de entrega y entregas estables',
+    metric: {
+      label: 'Estado',
+      kind: 'status',
+      items: ['En despliegue a producción'],
+    },
+    stack: ['ERP/CRM', 'SaaS', 'España'],
+    links: [{ label: 'Producto →', href: 'https://doligestion.es/' }],
+  },
+  {
+    id: 'microservices',
+    name: 'Ecosistema de microservicios',
+    challenge: '5 servicios NestJS orquestados con Docker y pruebas automatizadas',
+    diagramTitle:
+      'Ecosistema de 5 microservicios NestJS con frontend React, comunicación REST y orquestación Docker Compose',
+    stack: ['NestJS', 'Docker', 'REST', 'React'],
+    links: [
+      {
+        label: 'Repo →',
+        href: 'https://github.com/dsalazardev/ing-sw2-project/tree/development',
+      },
+    ],
+  },
+];
+
+const mirrored = (index: number) => index === 1;
+const headingClass = (index: number) =>
+  `text-lg font-bold text-navy-900 sm:text-xl lg:col-span-7 ${mirrored(index) ? 'lg:order-1' : 'lg:order-2'}`;
+const diagramClass = (index: number) =>
+  `lg:col-span-5 lg:row-span-2 lg:self-center ${mirrored(index) ? 'lg:order-2' : 'lg:order-1'}`;
+const bodyClass = () => 'flex flex-col gap-6 lg:col-span-7 lg:order-3';
+const linkClass =
+  'rounded-sm font-semibold text-navy-900 underline decoration-line underline-offset-4 transition-colors hover:text-accent hover:decoration-accent focus-visible:outline-2';
+---
+
+<section id="casos" class="border-y border-line bg-white">
+  <div class="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+    <span
+      class="pointer-events-none absolute top-0 left-0 hidden h-3 w-3 border-t border-l border-line lg:block"
+      aria-hidden="true"></span>
+    <span
+      class="pointer-events-none absolute top-0 right-0 hidden h-3 w-3 border-t border-r border-line lg:block"
+      aria-hidden="true"></span>
+    <span
+      class="pointer-events-none absolute bottom-0 left-0 hidden h-3 w-3 border-b border-l border-line lg:block"
+      aria-hidden="true"></span>
+    <span
+      class="pointer-events-none absolute right-0 bottom-0 hidden h-3 w-3 border-r border-b border-line lg:block"
+      aria-hidden="true"></span>
+
+    <SectionLabel index="06" text="EVIDENCIA" />
+
+    <h2 class="mt-6 text-2xl font-bold tracking-tight text-navy-900 sm:text-3xl">
+      Evidencia > promesas
+    </h2>
+
+    <div class="mt-10 flex flex-col gap-6 lg:gap-8">
+      {
+        cases.map((item, index) => (
+          <Card class="grid gap-6 lg:grid-cols-12 lg:gap-x-10">
+            <h3 class={headingClass(index)}>
+              {item.name} — {item.challenge}
+            </h3>
+
+            <div class={diagramClass(index)}>
+              <C4Diagram variant={item.id} title={item.diagramTitle} />
+            </div>
+
+            <div class={bodyClass()}>
+              {item.metric && (
+                <div>
+                  <p class="font-mono text-xs tracking-wider text-steel-500 uppercase">
+                    {item.metric.label}
+                  </p>
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    {item.metric.kind === 'stats'
+                      ? item.metric.items.map((value) => (
+                          <span class="rounded-sm border border-line px-2.5 py-1 font-mono text-sm font-bold text-navy-900">
+                            {value}
+                          </span>
+                        ))
+                      : item.metric.items.map((value) => (
+                          <Badge class="border-navy-900/20 text-navy-900">{value}</Badge>
+                        ))}
+                  </div>
+                </div>
+              )}
+
+              <div>
+                <p class="font-mono text-xs tracking-wider text-steel-500 uppercase">Stack</p>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  {item.stack.map((tech) => (
+                    <Badge>{tech}</Badge>
+                  ))}
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-x-4 gap-y-2">
+                {item.links.map((link) => (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class={linkClass}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+                {item.loom && (
+                  <a href={item.loom} target="_blank" rel="noopener noreferrer" class={linkClass}>
+                    Demo Loom →
+                  </a>
+                )}
+                {item.caseUrl && (
+                  <a href={item.caseUrl} class={linkClass}>
+                    Caso completo →
+                  </a>
+                )}
+              </div>
+            </div>
+          </Card>
+        ))
+      }
+    </div>
+  </div>
+</section>

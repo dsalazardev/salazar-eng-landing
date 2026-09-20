@@ -1,0 +1,100 @@
+---
+type Variant = 'telemetry' | 'doligestion' | 'microservices';
+
+interface Props {
+  variant: Variant;
+  title: string;
+}
+
+const { variant, title } = Astro.props;
+
+const titleId = `c4-${variant}-title`;
+const markerId = `c4-${variant}-arrow`;
+
+const box = (x: number, y: number, w: number, h: number, label: string, sub = ''): string => {
+  const cx = x + w / 2;
+  const labelY = sub ? y + h / 2 - 1 : y + h / 2 + 3.5;
+  const subText = sub
+    ? `<text x="${cx}" y="${y + h / 2 + 11}" text-anchor="middle" class="fill-steel-500 font-mono" font-size="7" letter-spacing="0.6">${sub}</text>`
+    : '';
+  return (
+    `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2" fill="none" stroke="currentColor" stroke-width="1" class="text-line"/>` +
+    `<text x="${cx}" y="${labelY}" text-anchor="middle" class="fill-navy-900 font-mono" font-size="9.5" letter-spacing="0.6">${label}</text>` +
+    subText
+  );
+};
+
+const dashedBox = (x: number, y: number, w: number, h: number, label: string, sub = ''): string => {
+  const cx = x + w / 2;
+  const labelY = sub ? y + h / 2 - 1 : y + h / 2 + 3.5;
+  const subText = sub
+    ? `<text x="${cx}" y="${y + h / 2 + 11}" text-anchor="middle" class="fill-steel-500 font-mono" font-size="7" letter-spacing="0.6">${sub}</text>`
+    : '';
+  return (
+    `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" class="text-line"/>` +
+    `<text x="${cx}" y="${labelY}" text-anchor="middle" class="fill-navy-900 font-mono" font-size="9.5" letter-spacing="0.6">${label}</text>` +
+    subText
+  );
+};
+
+const frame = (x: number, y: number, w: number, h: number): string =>
+  `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="4 3" class="text-line"/>`;
+
+const arrow = (x1: number, y1: number, x2: number, y2: number): string =>
+  `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="currentColor" stroke-width="1" marker-end="url(#${markerId})" class="text-steel-500"/>`;
+
+const connector = (x1: number, y1: number, x2: number, y2: number): string =>
+  `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" class="text-line"/>`;
+
+const note = (
+  x: number,
+  y: number,
+  text: string,
+  anchor: 'start' | 'middle' | 'end' = 'middle',
+): string =>
+  `<text x="${x}" y="${y}" text-anchor="${anchor}" class="fill-steel-500 font-mono" font-size="7" letter-spacing="0.6">${text}</text>`;
+
+const diagrams: Record<Variant, string> = {
+  telemetry: [
+    dashedBox(6, 94, 80, 34, 'N8N', '3 WORKFLOWS'),
+    connector(86, 111, 100, 111),
+    box(100, 18, 120, 26, 'SENSOR WEAR OS'),
+    arrow(160, 44, 160, 60),
+    note(166, 54, 'TELEMETRÍA', 'start'),
+    box(100, 60, 120, 26, 'API FASTAPI'),
+    arrow(160, 86, 160, 102),
+    box(100, 102, 120, 34, 'AGENTE RAG', 'LANGGRAPH · CHROMADB'),
+    arrow(160, 136, 160, 152),
+    box(100, 152, 120, 26, 'DASHBOARD ANGULAR'),
+  ].join(''),
+  doligestion: [
+    note(8, 14, 'PROCESO', 'start'),
+    box(70, 30, 180, 32, 'DEPLOY MANUAL', 'FRÁGIL'),
+    arrow(160, 62, 160, 82),
+    box(70, 82, 180, 32, 'PIPELINE DE ENTREGA'),
+    arrow(160, 114, 160, 134),
+    box(70, 134, 180, 32, 'ENTREGAS ESTABLES'),
+  ].join(''),
+  microservices: [
+    frame(6, 6, 308, 188),
+    box(60, 18, 200, 26, 'FRONTEND REACT 19'),
+    arrow(160, 44, 160, 60),
+    note(166, 56, 'REST · JWT', 'start'),
+    box(26, 60, 130, 26, 'MS-GEO-ROUTING'),
+    box(164, 60, 130, 26, 'MS-ORDERS'),
+    arrow(160, 86, 160, 102),
+    box(26, 102, 130, 26, 'MS-INVENTORY'),
+    box(164, 102, 130, 26, 'MS-SECURITY'),
+    arrow(160, 128, 160, 142),
+    box(60, 142, 200, 30, 'MS-NOTIFICATIONS', 'EMAIL · SMS'),
+    note(160, 189, 'DOCKER COMPOSE · BRIDGE'),
+  ].join(''),
+};
+
+const defs = `<defs><marker id="${markerId}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="fill-steel-500"/></marker></defs>`;
+---
+
+<svg role="img" aria-labelledby={titleId} viewBox="0 0 320 200" class="h-auto w-full" fill="none">
+  <title id={titleId}>{title}</title>
+  <Fragment set:html={defs + diagrams[variant]} />
+</svg>
