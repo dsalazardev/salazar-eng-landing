@@ -7,6 +7,14 @@ interface Props {
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
+const WARMUP_NOTICE_MS = 9000;
+const TIMEOUT_MS = 120000;
+
+const GENERIC_ERROR = 'No pudimos enviar tu solicitud. Intenta de nuevo.';
+const RATE_LIMIT_ERROR = 'Demasiados intentos seguidos. Espera un minuto e intenta de nuevo.';
+const TIMEOUT_ERROR = 'El servicio tardó demasiado en responder. Intenta de nuevo.';
+const WARMUP_NOTICE = 'El servicio está despertando; puede tardar hasta un minuto.';
+
 const options = [
   'El sistema va lento y cada cambio rompe algo',
   'El equipo pierde horas en tareas manuales',
@@ -17,12 +25,25 @@ const options = [
 export default function ContactForm({ endpoint }: Props) {
   const [status, setStatus] = useState<Status>('idle');
   const [invalid, setInvalid] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [slow, setSlow] = useState(false);
   const messageRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     if (status === 'success' || status === 'error') {
       messageRef.current?.focus();
     }
+  }, [status]);
+
+  useEffect(() => {
+    if (status !== 'submitting') {
+      return;
+    }
+    const timer = window.setTimeout(() => setSlow(true), WARMUP_NOTICE_MS);
+    return () => {
+      window.clearTimeout(timer);
+      setSlow(false);
+    };
   }, [status]);
 
   const handleSubmit = async (event: SubmitEvent<HTMLFormElement>) => {
@@ -35,14 +56,18 @@ export default function ContactForm({ endpoint }: Props) {
     }
     setInvalid(false);
 
-    // TODO: configurar PUBLIC_LEAD_ENDPOINT en el deploy y crear el workflow n8n
-    // (recibe -> envía el PDF -> notifica a Daner -> agenda seguimiento).
+    // La captación la ejecuta ms-notifier-webhook (Render); PUBLIC_LEAD_ENDPOINT se define en build (ver .env.example).
     if (!endpoint) {
+      setErrorMessage(null);
       setStatus('error');
       return;
     }
 
     setStatus('submitting');
+    setErrorMessage(null);
+
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), TIMEOUT_MS);
 
     try {
       const data = new FormData(form);
@@ -51,17 +76,28 @@ export default function ContactForm({ endpoint }: Props) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email: String(data.get('email') ?? ''),
-          necesidad: String(data.get('necesidad') ?? ''),
+          need: String(data.get('need') ?? ''),
         }),
+        signal: controller.signal,
       });
+
+      if (response.status === 429) {
+        setErrorMessage(RATE_LIMIT_ERROR);
+        setStatus('error');
+        return;
+      }
 
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);
       }
 
+      setErrorMessage(null);
       setStatus('success');
     } catch {
+      setErrorMessage(controller.signal.aborted ? TIMEOUT_ERROR : null);
       setStatus('error');
+    } finally {
+      window.clearTimeout(timeoutId);
     }
   };
 
@@ -102,12 +138,12 @@ export default function ContactForm({ endpoint }: Props) {
       </div>
 
       <div>
-        <label htmlFor="lead-necesidad" className="block text-sm font-semibold text-navy-900">
+        <label htmlFor="lead-need" className="block text-sm font-semibold text-navy-900">
           ¿Qué te quita el sueño?
         </label>
         <select
-          id="lead-necesidad"
-          name="necesidad"
+          id="lead-need"
+          name="need"
           required
           defaultValue=""
           aria-invalid={invalid || undefined}
@@ -132,6 +168,12 @@ export default function ContactForm({ endpoint }: Props) {
         {status === 'submitting' ? 'Enviando…' : 'Recibir checklist →'}
       </button>
 
+      {status === 'submitting' && slow && (
+        <p role="status" className="text-sm text-steel-500">
+          {WARMUP_NOTICE}
+        </p>
+      )}
+
       {status === 'error' && (
         <p
           ref={messageRef}
@@ -139,7 +181,7 @@ export default function ContactForm({ endpoint }: Props) {
           tabIndex={-1}
           className="text-sm font-semibold text-navy-900"
         >
-          No pudimos enviar tu solicitud. Intenta de nuevo.
+          {errorMessage ?? GENERIC_ERROR}
         </p>
       )}
 

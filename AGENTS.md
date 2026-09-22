@@ -128,6 +128,12 @@ pnpm astro check            # Type-checking (TS strict)
 
 > Al iniciar el dev server desde un agente, **usar `astro dev --background`** y gestionarlo con `stop`/`status`/`logs`.
 
+### Variables de entorno (build-time)
+
+- **`PUBLIC_LEAD_ENDPOINT`** — endpoint del formulario del lead magnet (backend `ms-notifier-webhook`, Render). El ejemplo versionado es `.env.example`; copiarlo a `.env` (sin versionar) para dev local.
+- **Naturaleza build-time:** Astro inlinea `PUBLIC_*` en el bundle del cliente durante `pnpm build`; cambiarla exige rebuild/re-deploy (no se lee en runtime).
+- **Pendiente de deploy:** definirla en el entorno de build del host (Cloudflare Pages/Vercel) y, antes del deploy de producción, agregar el dominio final al allowlist `CORS_ORIGINS` del backend + re-deploy.
+
 ### Checklist de avance (marcar al completar)
 
 ```
@@ -140,7 +146,7 @@ pnpm astro check            # Type-checking (TS strict)
 [ x ] 06  ProofOfWork (3 tarjetas con C4 + métricas + links)
 [ x ] 07  Process (4 pasos)
 [ x ] 08  Founder (bio ejecutiva)
-[ ] 09  LeadMagnet (isla React + n8n)
+[ x ] 09  LeadMagnet (isla React)
 [ ] 10  Faq (accordion nativo)
 [ ] 11  CtaFinal + Footer (firma de marca)
 [ ] QA   Lighthouse ≥98 / JS <10KB / formulario e2e / OG images / sitemap

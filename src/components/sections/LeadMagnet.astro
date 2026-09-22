@@ -24,9 +24,14 @@ const endpoint = import.meta.env.PUBLIC_LEAD_ENDPOINT ?? '';
       <div class="lg:col-span-6">
         <Card class="p-6 lg:p-8">
           <ContactForm client:visible endpoint={endpoint} />
+          <noscript>
+            <p class="mt-4 text-sm text-steel-500">
+              Este formulario necesita JavaScript para enviarse. Actívalo para recibir el checklist.
+            </p>
+          </noscript>
         </Card>
         <p class="mt-4 font-mono text-xs tracking-wider text-steel-500 uppercase">
-          Captación automatizada con n8n (nuestro caso #0).
+          Captación automatizada (nuestro caso #0).
         </p>
       </div>
     </div>
