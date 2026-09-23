@@ -104,7 +104,7 @@ Estructura (modelo `Process.astro`: `<section>` → contenedor → `SectionLabel
 | Subcopy | `Precio, NDA, soporte y traspaso: las últimas objeciones, resueltas.` | Propuesta derivada del brief §3 (intención: "precio, NDA, soporte, traspaso") | **A confirmar** |
 | P1 | `¿Cuánto cuesta un proyecto?` → `Diagnóstico primero; cotización por alcance cerrado y fases.` | Brief L192 (§4.7) | Fijado |
 | P2 | `¿Trabajan con mi equipo interno?` → `Sí; integramos o hacemos traspaso completo con documentación.` | Brief L193 (§4.7) | Fijado |
-| P3 | `¿Por qué un estudio boutique y no una agencia?` → `Un solo ingeniero senior: menos overhead, más contexto, comunicación directa.` | Brief L194 (§4.7) | Fijado |
+| P3 | `¿Por qué un estudio boutique y no una agencia?` → `Un solo desarrollador, sin intermediarios: menos overhead, más contexto, comunicación directa.` | Brief L194 (§4.7) | Fijado |
 | P4 | `¿Qué pasa si algo falla post-lanzamiento?` → `Todo proyecto incluye periodo de soporte; retainer opcional.` | Brief L195 (§4.7) | Fijado |
 | P5 | `¿Firman NDA?` → `Sí, antes de cualquier conversación técnica.` | Brief L196 (§4.7) | Fijado |
 

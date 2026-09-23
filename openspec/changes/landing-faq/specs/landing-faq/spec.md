@@ -103,7 +103,7 @@ El accordion SHALL usar la semántica nativa de `<details>/<summary>`: cada summ
 
 ### Requirement: Copy del FAQ
 
-La sección SHALL usar el copy fijado. h2: "Preguntas frecuentes"; subcopy: "Precio, NDA, soporte y traspaso: las últimas objeciones, resueltas."; respuestas verbatim del brief §4.7: 1 "Diagnóstico primero; cotización por alcance cerrado y fases.", 2 "Sí; integramos o hacemos traspaso completo con documentación.", 3 "Un solo ingeniero senior: menos overhead, más contexto, comunicación directa.", 4 "Todo proyecto incluye periodo de soporte; retainer opcional.", 5 "Sí, antes de cualquier conversación técnica.". Las preguntas SHALL ser: "¿Cuánto cuesta un proyecto?", "¿Trabajan con mi equipo interno?", "¿Por qué un estudio boutique y no una agencia?", "¿Qué pasa si algo falla post-lanzamiento?" y "¿Firman NDA?". NO SHALL haber preguntas, respuestas ni cifras adicionales.
+La sección SHALL usar el copy fijado. h2: "Preguntas frecuentes"; subcopy: "Precio, NDA, soporte y traspaso: las últimas objeciones, resueltas."; respuestas verbatim del brief §4.7: 1 "Diagnóstico primero; cotización por alcance cerrado y fases.", 2 "Sí; integramos o hacemos traspaso completo con documentación.", 3 "Un solo desarrollador, sin intermediarios: menos overhead, más contexto, comunicación directa.", 4 "Todo proyecto incluye periodo de soporte; retainer opcional.", 5 "Sí, antes de cualquier conversación técnica.". Las preguntas SHALL ser: "¿Cuánto cuesta un proyecto?", "¿Trabajan con mi equipo interno?", "¿Por qué un estudio boutique y no una agencia?", "¿Qué pasa si algo falla post-lanzamiento?" y "¿Firman NDA?". NO SHALL haber preguntas, respuestas ni cifras adicionales.
 
 #### Scenario: Textos exactos
 
