@@ -1,13 +1,19 @@
 ---
+import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
 interface Props {
   index: string;
   text: string;
+  class?: string;
 }
 
-const { index, text } = Astro.props;
+const { index, text, class: className } = Astro.props;
+
+const classes = twMerge(clsx(['flex items-center gap-4', className]));
 ---
 
-<div class="flex items-center gap-4">
+<div class={classes}>
   <span class="font-mono text-xs uppercase tracking-[0.2em] text-steel-500">{index}/ {text}</span>
   <span class="h-px flex-1 bg-line" aria-hidden="true"></span>
 </div>

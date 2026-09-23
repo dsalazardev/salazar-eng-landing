@@ -1,0 +1,54 @@
+---
+const year = new Date().getFullYear();
+const contactEmail = 'daneralejandro03@gmail.com';
+const mailto = `mailto:${contactEmail}?subject=Diagn%C3%B3stico%20gratuito%20de%2020%20minutos`;
+const whatsapp = 'https://wa.me/573145919465';
+
+const navLinks = [
+  { href: '#servicios', label: 'Servicios' },
+  { href: '#casos', label: 'Casos' },
+  { href: '#proceso', label: 'Proceso' },
+  { href: '#faq', label: 'FAQ' },
+];
+---
+
+{/* TODO: añadir el logo del footer cuando exista el SVG vectorial (ARCHIVOS/LOGO/AI/) o un isotipo blanco verificado por píxeles (≥3:1 sobre navy); hoy `src/assets/isotipo-white.png` no existe y la variante oscura de `tools/pdf/` no sirve sobre navy. */}
+<footer class="border-t border-white/10 bg-navy-900 text-white">
+  <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+    <div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+      <div>
+        <p class="text-sm font-semibold">— SALAZAR Eng. · Software & Applied AI</p>
+        <ul class="mt-3 flex flex-wrap gap-x-4 gap-y-1">
+          {
+            navLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-sm text-white/70 transition-colors hover:text-white"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="sm:text-right">
+        <p class="text-sm text-white/70">
+          <a href={mailto} class="transition-colors hover:text-white">{contactEmail}</a>
+          <span class="mx-2 text-white/30" aria-hidden="true">·</span>
+          <a
+            href={whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="transition-colors hover:text-white">WhatsApp</a
+          >
+        </p>
+        <p class="mt-3 font-mono text-xs tracking-wider text-white/60 uppercase">
+          © {year} SALAZAR Eng.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

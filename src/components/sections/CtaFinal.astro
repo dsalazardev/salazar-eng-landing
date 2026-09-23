@@ -1,0 +1,61 @@
+---
+import SectionLabel from '../ui/SectionLabel.astro';
+import Button from '../ui/Button.astro';
+import LazyEmbed from '../islands/LazyEmbed.tsx';
+
+const bookingUrl = import.meta.env.PUBLIC_BOOKING_URL ?? '';
+const contactEmail = 'daneralejandro03@gmail.com';
+const mailto = `mailto:${contactEmail}?subject=Diagn%C3%B3stico%20gratuito%20de%2020%20minutos`;
+---
+
+<section id="contacto" class="bg-navy-900 text-white">
+  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+    <SectionLabel
+      index="11"
+      text="CTA"
+      class="[&>span:first-child]:text-white/70 [&>span:last-child]:bg-white/15"
+    />
+
+    <h2 class="mt-6 text-2xl font-bold tracking-tight sm:text-3xl">¿Construimos algo juntos?</h2>
+    <p class="mt-3 max-w-2xl text-white/70">
+      Agenda un diagnóstico técnico de 20 minutos — sin costo y sin compromiso. Salimos con un plan
+      claro, lo trabajemos o no.
+    </p>
+
+    <div class="mt-8 max-w-2xl">
+      {
+        bookingUrl ? (
+          <LazyEmbed
+            client:visible
+            src={bookingUrl}
+            title="Agenda tu diagnóstico de 20 minutos"
+            ctaLabel="Agendar en Cal.com →"
+          />
+        ) : (
+          <Button
+            variant="primary"
+            size="lg"
+            href={mailto}
+            class="hover:bg-white hover:text-navy-900"
+          >
+            Agendar diagnóstico →
+          </Button>
+        )
+      }
+
+      <p class="mt-4 text-white/70">
+        o escribe a
+        <a
+          href={mailto}
+          class="underline decoration-white/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
+        >
+          {contactEmail}
+        </a>
+      </p>
+    </div>
+
+    <p class="mt-6 font-mono text-xs tracking-wider text-white/60 uppercase">
+      Respuesta en menos de 24 h · Remoto LATAM · Internacional
+    </p>
+  </div>
+</section>
