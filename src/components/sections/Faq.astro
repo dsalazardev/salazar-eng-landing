@@ -1,0 +1,66 @@
+---
+import { ChevronDown } from 'lucide-astro';
+import SectionLabel from '../ui/SectionLabel.astro';
+
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+const faqs: FaqItem[] = [
+  {
+    question: '¿Cuánto cuesta un proyecto?',
+    answer: 'Diagnóstico primero; cotización por alcance cerrado y fases.',
+  },
+  {
+    question: '¿Trabajan con mi equipo interno?',
+    answer: 'Sí; integramos o hacemos traspaso completo con documentación.',
+  },
+  {
+    question: '¿Por qué un estudio boutique y no una agencia?',
+    answer: 'Un solo ingeniero senior: menos overhead, más contexto, comunicación directa.',
+  },
+  {
+    question: '¿Qué pasa si algo falla post-lanzamiento?',
+    answer: 'Todo proyecto incluye periodo de soporte; retainer opcional.',
+  },
+  {
+    question: '¿Firman NDA?',
+    answer: 'Sí, antes de cualquier conversación técnica.',
+  },
+];
+---
+
+<section id="faq" class="border-y border-line bg-white">
+  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+    <SectionLabel index="10" text="FAQ" />
+
+    <h2 class="mt-6 text-2xl font-bold tracking-tight text-navy-900 sm:text-3xl">
+      Preguntas frecuentes
+    </h2>
+    <p class="mt-3 text-steel-500">
+      Precio, NDA, soporte y traspaso: las últimas objeciones, resueltas.
+    </p>
+
+    <div class="mt-10 max-w-3xl">
+      {
+        faqs.map((faq, index) => (
+          <details
+            name="faq"
+            open={index === 0}
+            class:list={['group border-t border-line', index === faqs.length - 1 && 'border-b']}
+          >
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-4 [&::-webkit-details-marker]:hidden">
+              <span class="font-semibold text-navy-900">{faq.question}</span>
+              <ChevronDown
+                class="size-4 shrink-0 text-steel-500 transition-transform group-open:rotate-180 motion-reduce:transition-none"
+                aria-hidden="true"
+              />
+            </summary>
+            <p class="pb-4 text-sm text-steel-500">{faq.answer}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
