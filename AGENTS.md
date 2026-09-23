@@ -147,7 +147,7 @@ pnpm astro check            # Type-checking (TS strict)
 [ x ] 07  Process (4 pasos)
 [ x ] 08  Founder (bio ejecutiva)
 [ x ] 09  LeadMagnet (isla React)
-[ ] 10  Faq (accordion nativo)
+[ x ] 10  Faq (accordion nativo)
 [ ] 11  CtaFinal + Footer (firma de marca)
 [ ] QA   Lighthouse ≥98 / JS <10KB / formulario e2e / OG images / sitemap
 [ ] DEP  Deploy Fase 1 (Cloudflare/Vercel)
