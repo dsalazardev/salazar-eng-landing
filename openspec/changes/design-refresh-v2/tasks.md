@@ -35,14 +35,14 @@
 
 ## 5. Verificación de aceptación
 
-- [ ] 5.1 Ejecutar `pnpm astro check` y `pnpm build` y registrar las salidas completas (0 errores; build completa)
-- [ ] 5.2 Inspeccionar el dist: anclas del contrato (`#hero`→`#contacto`), 3 scripts inline < 10 KB, chunk del módulo de motion externo y hasheado, utilidades del sistema presentes y 6 tokens intactos
-- [ ] 5.3 Medir y registrar el peso del chunk de motion (objetivo ≤ 15 KB gzip); si lo excede, aplicar imports granulares de Anime.js, volver a medir y registrar el peso final
-- [ ] 5.4 Barrido responsive 320→1440 px, verificación de `prefers-reduced-motion` y del LCP del titular (candidato sin animación); registrar como verificación humana pendiente del dueño
-- [ ] 5.5 Verificación de contenido verbatim por grep del dist: "Telemetry Heart AI", "DoliGestión", "Ecosistema de microservicios", "F1 0.99", "Recall crítico 1.00", "47 tests", las 5 preguntas del FAQ y la bio del fundador; comprobar ausencia de contenido inventado ("Legacy Core", "Migración de Core", "Strangler", "ZERO-DOWNTIME", "PROD-READY")
-- [ ] 5.6 Condicional: si durante la implementación cambian los tokens (no previsto), actualizar `.stitch/DESIGN.md`, `.stitch/metadata.json` y el design system de Stitch; si no cambian (esperado), registrar la decisión de no tocar artefactos de diseño
+- [x] 5.1 Ejecutar `pnpm astro check` y `pnpm build` y registrar las salidas completas (0 errores; build completa)
+- [x] 5.2 Inspeccionar el dist: anclas del contrato (`#hero`→`#contacto`), 3 scripts inline < 10 KB, chunk del módulo de motion externo y hasheado, utilidades del sistema presentes y 6 tokens intactos
+- [x] 5.3 Medir y registrar el peso del chunk de motion (objetivo ≤ 15 KB gzip); si lo excede, aplicar imports granulares de Anime.js, volver a medir y registrar el peso final
+- [x] 5.4 Barrido responsive 320→1440 px, verificación de `prefers-reduced-motion` y del LCP del titular (candidato sin animación); registrar como verificación humana pendiente del dueño
+- [x] 5.5 Verificación de contenido verbatim por grep del dist: "Telemetry Heart AI", "DoliGestión", "Ecosistema de microservicios", "F1 0.99", "Recall crítico 1.00", "47 tests", las 5 preguntas del FAQ y la bio del fundador; comprobar ausencia de contenido inventado ("Legacy Core", "Migración de Core", "Strangler", "ZERO-DOWNTIME", "PROD-READY")
+- [x] 5.6 Condicional: si durante la implementación cambian los tokens (no previsto), actualizar `.stitch/DESIGN.md`, `.stitch/metadata.json` y el design system de Stitch; si no cambian (esperado), registrar la decisión de no tocar artefactos de diseño
 
 ## 6. Cierre
 
-- [ ] 6.1 Revisar `git status`/`git diff` por bloques y commitear con mensajes convencionales (`fix(lucide)`, `docs(agents)`, `feat(design)`, `feat(motion)`, `docs(openspec)`); verificar el alcance con `git show --stat` por commit
-- [ ] 6.2 Redactar el reporte final del apply: salidas de `astro check`/`build`, pesos medidos, resultado del grep verbatim, pendientes humanos y problemas encontrados
+- [x] 6.1 Revisar `git status`/`git diff` por bloques y commitear con mensajes convencionales (`fix(lucide)`, `docs(agents)`, `feat(design)`, `feat(motion)`, `docs(openspec)`); verificar el alcance con `git show --stat` por commit
+- [x] 6.2 Redactar el reporte final del apply: salidas de `astro check`/`build`, pesos medidos, resultado del grep verbatim, pendientes humanos y problemas encontrados

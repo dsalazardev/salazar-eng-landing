@@ -1,7 +1,7 @@
 @import "tailwindcss" source(none);
 @source "../";
 
-@theme {
+@theme static {
   --color-navy-900: #0B2545;
   --color-navy-700: #16345E;
   --color-steel-500: #64748B;
