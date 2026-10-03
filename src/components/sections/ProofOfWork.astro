@@ -114,7 +114,13 @@ const linkClass =
             </h3>
 
             <div class={diagramClass(index)}>
-              <C4Diagram variant={item.id} title={item.diagramTitle} />
+              <div class="relative border border-line bg-surface p-4">
+                <span class="pointer-events-none absolute top-1 left-1 font-mono text-xs text-steel-500" aria-hidden="true">+</span>
+                <span class="pointer-events-none absolute top-1 right-1 font-mono text-xs text-steel-500" aria-hidden="true">+</span>
+                <span class="pointer-events-none absolute bottom-1 left-1 font-mono text-xs text-steel-500" aria-hidden="true">+</span>
+                <span class="pointer-events-none absolute right-1 bottom-1 font-mono text-xs text-steel-500" aria-hidden="true">+</span>
+                <C4Diagram variant={item.id} title={item.diagramTitle} />
+              </div>
             </div>
 
             <div class={bodyClass()}>

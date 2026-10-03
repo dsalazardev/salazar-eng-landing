@@ -39,12 +39,15 @@ const pains: PainPoint[] = [
 
     <ul class="border-b border-line">
       {
-        pains.map((pain) => (
+        pains.map((pain, index) => (
           <li class="grid gap-3 border-t border-line py-8 lg:grid-cols-2 lg:gap-x-12">
             <blockquote class="border-l-2 border-line pl-4 text-lg italic text-steel-500">
               {pain.problem}
             </blockquote>
-            <p class="text-lg font-semibold text-navy-900">{pain.answer}</p>
+            <div>
+              <span aria-hidden="true" class="tech-label block">RESOLUCIÓN 0{index + 1}</span>
+              <p class="mt-1 text-lg font-semibold text-navy-900">{pain.answer}</p>
+            </div>
           </li>
         ))
       }
