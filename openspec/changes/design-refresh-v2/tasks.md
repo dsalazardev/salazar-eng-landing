@@ -18,12 +18,12 @@
 - [x] 3.4 Problema/Solución: matriz de diagnóstico con reglas full-bleed y etiquetas de resolución decorativas (`aria-hidden`), conservando los 3 pares cita→respuesta verbatim y sin añadidos de negocio; verificar por inspección (3 pares exactos, etiquetas decorativas, sin iconos/CTA)
 - [x] 3.5 Servicios: bento console con jerarquía reforzada, métrica `<500 ms` como lectura y h2 aceptado "Servicios de Ingeniería Especializada", conservando el copy de las 3 tarjetas y el CTA; verificar por inspección (h2 aceptado, 3 tarjetas verbatim, CTA `#casos`)
 - [x] 3.6 Evidencia: diagramas C4 como pieza gráfica central con layout alternado ①②③, conservando nombres, retos, métricas verificadas y links; verificar por inspección (3 títulos exactos, `F1 0.99`/`Recall crítico 1.00`/`47 tests`, links confirmados)
-- [ ] 3.7 Proceso: nodos conectados de instrumentación sobre el `<ol>` de 4 pasos, conservando numeración y copy; verificar por inspección (un `<ol>` con 4 `<li>`, copy verbatim, sin iconos/imágenes/CTA)
-- [ ] 3.8 Fundador: dossier editorial con marco de instrumentación sobre el retrato (grayscale y encuadre 4:5 intactos), conservando bio, cita, cierre y credenciales; verificar por inspección (textos exactos, asset WebP hasheado, sin enlaces sociales)
-- [ ] 3.9 Checklist: panel de captación rediseñado con título de sección aceptado "Recurso Técnico Gratuito", conservando contrato del formulario (labels, opciones, `email`/`need`, endpoint) y microcopy; verificar por inspección (título presente, contrato intacto, `noscript` presente)
-- [ ] 3.10 FAQ: accordion técnico con reglas full-bleed y hairlines, conservando las 5 preguntas/respuestas y el comportamiento nativo (`details`/`summary`, exclusividad por `name`); verificar por inspección (`details` ×5, `name="faq"` ×5, copy verbatim)
-- [ ] 3.11 CTA final: consola oscura de cierre con retícula sutil, conservando copy, fallback de agendamiento, alternativa email/WhatsApp y ancla; verificar por inspección (`id="contacto"` ×1, `cal.com` ausente del HTML inicial, firma presente)
-- [ ] 3.12 Footer: colofón técnico con anotaciones decorativas, conservando firma, contacto, enlaces y copyright; verificar por inspección (firma, email/WhatsApp, 4 enlaces, footer tras `</main>`)
+- [x] 3.7 Proceso: nodos conectados de instrumentación sobre el `<ol>` de 4 pasos, conservando numeración y copy; verificar por inspección (un `<ol>` con 4 `<li>`, copy verbatim, sin iconos/imágenes/CTA)
+- [x] 3.8 Fundador: dossier editorial con marco de instrumentación sobre el retrato (grayscale y encuadre 4:5 intactos), conservando bio, cita, cierre y credenciales; verificar por inspección (textos exactos, asset WebP hasheado, sin enlaces sociales)
+- [x] 3.9 Checklist: panel de captación rediseñado con título de sección aceptado "Recurso Técnico Gratuito", conservando contrato del formulario (labels, opciones, `email`/`need`, endpoint) y microcopy; verificar por inspección (título presente, contrato intacto, `noscript` presente)
+- [x] 3.10 FAQ: accordion técnico con reglas full-bleed y hairlines, conservando las 5 preguntas/respuestas y el comportamiento nativo (`details`/`summary`, exclusividad por `name`); verificar por inspección (`details` ×5, `name="faq"` ×5, copy verbatim)
+- [x] 3.11 CTA final: consola oscura de cierre con retícula sutil, conservando copy, fallback de agendamiento, alternativa email/WhatsApp y ancla; verificar por inspección (`id="contacto"` ×1, `cal.com` ausente del HTML inicial, firma presente)
+- [x] 3.12 Footer: colofón técnico con anotaciones decorativas, conservando firma, contacto, enlaces y copyright; verificar por inspección (firma, email/WhatsApp, 4 enlaces, footer tras `</main>`)
 
 ## 4. Animaciones Anime.js (por tipo)
 

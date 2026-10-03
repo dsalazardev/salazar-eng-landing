@@ -8,8 +8,13 @@ const contactEmail = 'daneralejandro03@gmail.com';
 const mailto = `mailto:${contactEmail}?subject=Diagn%C3%B3stico%20gratuito%20de%2020%20minutos`;
 ---
 
-<section id="contacto" class="bg-navy-900 text-white">
-  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+<section id="contacto" class="relative bg-navy-900 text-white">
+  <div
+    class="pointer-events-none absolute inset-0 bg-instrument-grid-inverse [mask-image:linear-gradient(to_bottom,transparent,#000_18%,#000_82%,transparent)]"
+    aria-hidden="true"
+  >
+  </div>
+  <div class="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
     <SectionLabel
       index="11"
       text="CTA"
