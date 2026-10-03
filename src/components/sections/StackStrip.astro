@@ -129,53 +129,56 @@ const stack = categories.flatMap((category) => category.items);
     </div>
   </div>
 
-  {/* Cuadrícula técnica de 4 categorías con celdas de icono + enlace (full-bleed) */}
-<div data-motion="stack-power" class="mx-auto max-w-6xl px-4 sm:px-6 grid border-t border-line sm:grid-cols-2">    {
-      categories.map((category) => (
-        <div>
-          <p class="tech-label border-r border-b border-line px-4 py-4">{category.label}</p>
-          <ul class="grid grid-cols-3">
-            {category.items.map((item) => (
-              <li>
-                {item.href ? (
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Visitar sitio oficial de ${item.name}`}
-                    class="group flex h-full items-center gap-2.5 border-r border-b border-line px-4 py-4 transition-colors hover:border-navy-900/30 focus-visible:outline-offset-[-2px]"
-                  >
-                    <svg
-                      class="size-5 shrink-0 text-steel-500 transition-colors group-hover:text-navy-900"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
+  {/* Cuadrícula técnica de 4 categorías — contenida y enmarcada (wrapper + retícula con bordes) */}
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div data-motion="stack-power" class="grid border-t border-l border-line sm:grid-cols-2">
+      {
+        categories.map((category) => (
+          <div>
+            <p class="tech-label border-r border-b border-line px-4 py-4">{category.label}</p>
+            <ul class="grid grid-cols-3">
+              {category.items.map((item) => (
+                <li>
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visitar sitio oficial de ${item.name}`}
+                      class="group flex h-full items-center gap-2.5 border-r border-b border-line px-4 py-4 transition-colors hover:border-navy-900/30 focus-visible:outline-offset-[-2px]"
                     >
-                      <use href={`#${item.icon}`} />
-                    </svg>
-                    <span class="font-mono text-xs tracking-wider text-steel-500 uppercase transition-colors group-hover:text-navy-900">
-                      {item.name}
-                    </span>
-                  </a>
-                ) : (
-                  <div class="group flex h-full items-center gap-2.5 border-r border-b border-line px-4 py-4 transition-colors hover:border-navy-900/30">
-                    <svg
-                      class="size-5 shrink-0 text-steel-500 transition-colors group-hover:text-navy-900"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <use href={`#${item.icon}`} />
-                    </svg>
-                    <span class="font-mono text-xs tracking-wider text-steel-500 uppercase transition-colors group-hover:text-navy-900">
-                      {item.name}
-                    </span>
-                  </div>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))
-    }
+                      <svg
+                        class="size-5 shrink-0 text-steel-500 transition-colors group-hover:text-navy-900"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <use href={`#${item.icon}`} />
+                      </svg>
+                      <span class="font-mono text-xs tracking-wider text-steel-500 uppercase transition-colors group-hover:text-navy-900">
+                        {item.name}
+                      </span>
+                    </a>
+                  ) : (
+                    <div class="group flex h-full items-center gap-2.5 border-r border-b border-line px-4 py-4 transition-colors hover:border-navy-900/30">
+                      <svg
+                        class="size-5 shrink-0 text-steel-500 transition-colors group-hover:text-navy-900"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <use href={`#${item.icon}`} />
+                      </svg>
+                      <span class="font-mono text-xs tracking-wider text-steel-500 uppercase transition-colors group-hover:text-navy-900">
+                        {item.name}
+                      </span>
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
   </div>
 
   <div class="mx-auto max-w-6xl px-4 pt-10 pb-12 sm:px-6 lg:pb-16">
