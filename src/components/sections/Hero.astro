@@ -51,7 +51,7 @@ import SectionLabel from '../ui/SectionLabel.astro';
       <span class="absolute bottom-3 right-3 font-mono text-xs text-steel-500">+</span>
 
       <span class="absolute top-3 left-8 font-mono text-xs tracking-wider text-steel-500 uppercase">
-        SE-01 / ISOTIPO
+        INSTRUMENT #01 // ISOTIPO SE
       </span>
       <span class="absolute right-8 bottom-3 font-mono text-xs tracking-wider text-steel-500 uppercase">
         GRID 30
@@ -70,5 +70,23 @@ import SectionLabel from '../ui/SectionLabel.astro';
         />
       </div>
     </Card>
+  </div>
+
+  {/* Franja de lecturas de instrumento — valores reales del contenido */}
+  <div class="mt-12 border-t border-line lg:col-span-12 lg:mt-16" aria-hidden="true">
+    <dl class="grid grid-cols-1 sm:grid-cols-3">
+      <div class="flex items-baseline gap-3 py-5 sm:pr-8">
+        <dt class="tech-label">SLA EN PRODUCCIÓN</dt>
+        <dd class="ml-auto font-mono text-2xl font-bold tracking-tight text-navy-900">&lt;500 ms</dd>
+      </div>
+      <div class="metric-divider flex items-baseline gap-3 py-5 sm:px-8">
+        <dt class="tech-label">IA EN PRODUCCIÓN</dt>
+        <dd class="ml-auto font-mono text-2xl font-bold tracking-tight text-navy-900">F1 0.99</dd>
+      </div>
+      <div class="metric-divider flex items-baseline gap-3 py-5 sm:pl-8">
+        <dt class="tech-label">RESPUESTA</dt>
+        <dd class="ml-auto font-mono text-2xl font-bold tracking-tight text-navy-900">&lt;24 h</dd>
+      </div>
+    </dl>
   </div>
 </section>
