@@ -23,7 +23,7 @@
 | **Framework** | **Astro (SSG)** — proyecto en v7.x (`astro@^7.3.3`). Sin SSR salvo necesidad justificada. **0 KB de JavaScript por defecto.** |
 | **Estilos** | **Tailwind CSS v4** vía `@tailwindcss/vite`. Design tokens como CSS variables en `src/styles/global.css`. |
 | **Islas interactivas** | **React 19** (`@astrojs/react`) habilitado **ÚNICAMENTE** para componentes interactivos (formulario, modales, embeds lazy). Todo lo demás: **`.astro` puro**. |
-| **Iconografía** | `lucide-astro` exclusivamente. Prohibidas librerías de iconos redundantes. |
+| **Iconografía** | `@lucide/astro` exclusivamente. Prohibidas librerías de iconos redundantes. |
 | **Tipografía** | `Manrope` (textos principales) + `JetBrains Mono` (código, etiquetas `01/ HERO`, badges técnicos). |
 | **TypeScript** | Modo estricto (`astro/tsconfigs/strict` + `jsx: react-jsx`). Sin `any` injustificados. |
 | **Utilidades** | `clsx` + `tailwind-merge` para composición condicional de clases. |
@@ -102,11 +102,11 @@ src/
 
 ## 04. Directivas de Rendimiento & Buenas Prácticas
 
-- **Cero librerías de animación.** Solo CSS nativo: scroll-driven animations (`animation-timeline`) con fallback IntersectionObserver mínimo.
-- **Cero librerías de iconos redundantes.** Solo `lucide-astro`.
+- **Animación: Anime.js v4 como capa única.** Permitida exclusivamente como módulo global diferido (`src/scripts/motion.ts`), nunca inline ni bloqueante. Reglas: hooks declarativos `data-motion`; duraciones 150–250 ms con easing de salida suave; solo `transform`/`opacity`; sin bucles decorativos; `prefers-reduced-motion: reduce` desactiva toda animación y deja el contenido en su estado final visible; el titular del hero (LCP) queda exento de animación.
+- **Cero librerías de iconos redundantes.** Solo `@lucide/astro`.
 - **Carga diferida obligatoria** para embeds de **Cal.com** y videos de **Loom** (click-to-load vía `LazyEmbed`).
 - **Imágenes:** formatos modernos (WebP/AVIF), `width`/`height` explícitos, `loading="lazy"` excepto el visual del hero; exportar logos desde el vectorial (`ARCHIVOS/LOGO/AI/`).
-- **JS inicial < 10 KB** (sin contar embeds lazy). Es un criterio de aceptación, no una aspiración.
+- **JS inicial < 10 KB** (sin contar embeds lazy ni el módulo de animación diferido, que se carga como chunk externo después de la carga inicial). Es un criterio de aceptación, no una aspiración.
 - **SEO técnico:** meta tags + OG/Twitter cards por página, `sitemap.xml`, `robots.txt`, schema.org `Organization`.
 - **Accesibilidad:** contraste AA mínimo, focus visible, `aria` correcto en accordion/formularios, navegación por teclado.
 - **Sin dependencias nuevas** sin justificación explícita en el PR/commit que las introduce.
