@@ -47,7 +47,7 @@ if (!reduceMotion.matches) {
   utils.set(fadeEls, { opacity: 0, translateY: 12 });
   utils.set(drawEls, { scaleX: 0, transformOrigin: 'left center' });
   for (const grid of stackEls) {
-    utils.set(grid.querySelectorAll<HTMLElement>(':scope > li'), { opacity: 0, scale: 0.96 });
+    utils.set(grid.querySelectorAll<HTMLElement>(':scope > li'), { opacity: 0, y: 20 });
   }
 
   const observer = new IntersectionObserver(
@@ -73,7 +73,7 @@ if (!reduceMotion.matches) {
             initStackMotion();
           } catch {
             // Fallback: si el chunk no carga, mostrar las celdas en su estado final.
-            utils.set(el.querySelectorAll<HTMLElement>(':scope > li'), { opacity: 1, scale: 1 });
+            utils.set(el.querySelectorAll<HTMLElement>(':scope > li'), { opacity: 1, y: 0 });
           }
         }
       }
