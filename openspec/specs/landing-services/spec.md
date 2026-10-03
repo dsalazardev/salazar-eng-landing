@@ -8,12 +8,12 @@ Define la sección de oferta posterior al reconocimiento: bento grid responsive 
 
 ### Requirement: Sección de oferta tras el reconocimiento
 
-La sección SHALL ser la inmediatamente posterior a la de problema/solución y SHALL mostrar un encabezado con la etiqueta "05/ SERVICIOS" y un `<h2>` "Servicios", seguido del bento de los 3 servicios.
+La sección SHALL ser la inmediatamente posterior a la de problema/solución y SHALL mostrar un encabezado con la etiqueta "05/ SERVICIOS" y un `<h2>` "Servicios de Ingeniería Especializada" (título embellecido aceptado como decisión de diseño), seguido del bento de los 3 servicios.
 
 #### Scenario: Posición y encabezado
 
 - **WHEN** se carga la página
-- **THEN** la sección sigue a la de problema/solución y muestra la etiqueta "05/ SERVICIOS" y el h2 "Servicios"
+- **THEN** la sección sigue a la de problema/solución y muestra la etiqueta "05/ SERVICIOS" y el h2 "Servicios de Ingeniería Especializada"
 
 ### Requirement: Ancla viva del contrato
 
@@ -78,12 +78,12 @@ La sección SHALL usar el copy del brief §4.4 sin añadidos: promesas, entregab
 
 ### Requirement: Shell de tarjeta y tono
 
-Las celdas SHALL construirse sobre el primitivo `Card` (borde `line`, fondo blanco) sin estado hover de tarjeta (`interactive` desactivado); la tarjeta del servicio ① SHALL tener mayor padding en `lg`. La sección NO SHALL incluir iconos y NO SHALL usar `accent` como color estático (solo el hover del CTA outline lo emplea).
+Las celdas SHALL construirse sobre el primitivo `Card` (borde `line`, fondo blanco); la capa global de animación PUEDE aportar el hover de tarjeta (cambio de tono de borde y elevación mínima) como affordance sutil. La tarjeta del servicio ① SHALL tener mayor padding en `lg`. La sección NO SHALL incluir iconos y NO SHALL usar `accent` como color estático (solo el hover del CTA outline y la capa de motion lo emplean).
 
 #### Scenario: Shell sin affordance falsa
 
-- **WHEN** se inspecciona una tarjeta
-- **THEN** usa el estilo base de `Card` sin cambio de borde en hover
+- **WHEN** se inspecciona una tarjeta en reposo y en hover
+- **THEN** el reposo usa el estilo base de `Card` y el hover aporta únicamente un cambio sutil de borde/tono
 
 #### Scenario: Cero iconos y accent estático
 
@@ -92,7 +92,7 @@ Las celdas SHALL construirse sobre el primitivo `Card` (borde `line`, fondo blan
 
 ### Requirement: Sin JavaScript nuevo
 
-La sección SHALL añadir 0 JavaScript (sin islas ni scripts); el único script del sitio SHALL seguir siendo el inline del navbar. `pnpm astro check` SHALL terminar con 0 errores y `pnpm build` SHALL completar.
+La sección SHALL añadir 0 JavaScript propio (sin islas ni scripts; la capa global de animación puede animar entradas y hovers de forma sutil). `pnpm astro check` SHALL terminar con 0 errores y `pnpm build` SHALL completar.
 
 #### Scenario: Sin JS nuevo
 
@@ -117,3 +117,17 @@ El change SHALL verificarse por inspección directa del build (sin levantar prev
 
 - **WHEN** el dueño revise la página en un navegador real
 - **THEN** confirma el bento en desktop y móvil, la alineación de los CTAs y la ausencia de desbordamientos entre 320 y 1440 px
+
+### Requirement: Rediseño Precision Instrument del bento de servicios
+
+La sección SHALL adoptar el tratamiento "bento console" del diseño aprobado: reglas full-bleed del sistema Precision Instrument, jerarquía interna reforzada por tarjeta (código → título → promesa), la métrica `<500 ms` presentada como lectura de instrumento y el CTA secundario anclado a una línea base común. El copy de las 3 tarjetas (títulos, promesas, entregables, slots y CTA) NO SHALL alterarse y NO SHALL añadirse iconos.
+
+#### Scenario: Bento console aplicado
+
+- **WHEN** se inspecciona la sección construida
+- **THEN** las tarjetas mantienen su anatomía con la jerarquía reforzada, la métrica como lectura destacada y las reglas full-bleed presentes
+
+#### Scenario: Copy intacto
+
+- **WHEN** se revisa el contenido de las 3 tarjetas
+- **THEN** títulos, promesas, entregables, slots y CTA coinciden verbatim con el copy existente

@@ -79,7 +79,7 @@ En viewports pequeños, el navbar SHALL ofrecer un menú operable con la Popover
 
 ### Requirement: Accesibilidad y marca
 
-El navbar SHALL exponer landmarks de navegación con nombres accesibles distintos para desktop y móvil (excluyentes por breakpoint), un botón de menú con nombre accesible cuyo estado expandido/colapsado se anuncie de forma nativa, áreas táctiles de al menos 44×44 px y foco visible en todos los elementos interactivos. SHALL reutilizar los tokens y primitivos existentes (incluido `Button` y los iconos `lucide-astro`), sin colores fuera de los 6 tokens ni dependencias nuevas.
+El navbar SHALL exponer landmarks de navegación con nombres accesibles distintos para desktop y móvil (excluyentes por breakpoint), un botón de menú con nombre accesible cuyo estado expandido/colapsado se anuncie de forma nativa, áreas táctiles de al menos 44×44 px y foco visible en todos los elementos interactivos. SHALL reutilizar los tokens y primitivos existentes (incluido `Button` y los iconos de `@lucide/astro`), sin colores fuera de los 6 tokens ni dependencias nuevas.
 
 #### Scenario: Landmarks y estado del botón
 
@@ -94,16 +94,16 @@ El navbar SHALL exponer landmarks de navegación con nombres accesibles distinto
 #### Scenario: Solo tokens y sin dependencias nuevas
 
 - **WHEN** se inspecciona el CSS construido y `package.json`
-- **THEN** no aparecen colores fuera de los 6 tokens y no se añaden dependencias
+- **THEN** no aparecen colores fuera de los 6 tokens y no se añaden dependencias nuevas (la migración a `@lucide/astro` ya está versionada)
 
 ### Requirement: Presupuesto de JS y build limpio
 
-El navbar SHALL añadir 0 islas hidratadas; el único JavaScript del navbar SHALL ser el micro-script inline de cierre del menú móvil, muy por debajo del presupuesto de 10 KB de JS inicial. `pnpm build` SHALL completar y `pnpm astro check` SHALL terminar con 0 errores.
+El navbar SHALL seguir añadiendo 0 islas hidratadas; su JavaScript propio SHALL ser únicamente el micro-script inline de cierre del menú móvil. La capa de animación global (módulo diferido del sistema Precision Instrument) PUEDE animar el navbar sin añadir scripts propios. `pnpm build` SHALL completar (con los imports resueltos vía `@lucide/astro`) y `pnpm astro check` SHALL terminar con 0 errores.
 
 #### Scenario: HTML sin islas
 
 - **WHEN** se inspecciona el HTML construido
-- **THEN** no hay `client:*` ni scripts de islas y el único script presente es el inline de cierre del menú
+- **THEN** no hay `client:*` ni scripts de islas y el único script inline propio del navbar sigue siendo el de cierre del menú
 
 #### Scenario: Verificaciones limpias
 
@@ -118,3 +118,17 @@ En navegadores sin soporte de la Popover API, la navegación SHALL seguir siendo
 
 - **WHEN** el navegador no soporta `:popover-open`
 - **THEN** los 4 enlaces de ancla y el CTA siguen visibles y operables, y no aparece un panel roto ni un botón sin función
+
+### Requirement: Navbar como barra de instrumentación
+
+El navbar SHALL adoptar el tratamiento "barra de instrumentación" del diseño aprobado: una franja superior de estado con anotaciones técnicas decorativas (decisión de diseño aceptada) y los 4 enlaces de ancla numerados con índices mono, manteniendo intactos el wordmark, los destinos `#servicios`/`#casos`/`#proceso`/`#faq`, el CTA a `#contacto`, el comportamiento sticky, el menú móvil nativo y el contrato de accesibilidad. Las anotaciones decorativas SHALL ser decorativas para tecnologías de asistencia y NO SHALL aportar información de negocio.
+
+#### Scenario: Barra de instrumentación sin romper contratos
+
+- **WHEN** se inspecciona el navbar construido
+- **THEN** existe la franja de estado decorativa y los enlaces numerados, y los destinos, el CTA, el sticky y el menú móvil conservan su comportamiento
+
+#### Scenario: Anotaciones decorativas ocultas para AT
+
+- **WHEN** un lector de pantalla recorre el navbar
+- **THEN** no anuncia las anotaciones técnicas decorativas

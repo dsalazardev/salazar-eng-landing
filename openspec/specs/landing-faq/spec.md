@@ -65,7 +65,7 @@ Las 5 preguntas SHALL implementarse como `<details name="faq">` con `<summary>`,
 
 ### Requirement: Indicador visual y marcador nativo
 
-Cada `<summary>` SHALL ocultar el marcador nativo (triángulo) y SHALL mostrar un indicador de despliegue basado en `ChevronDown` de `lucide-astro` que rota al abrir la pregunta, con transición desactivada bajo `prefers-reduced-motion: reduce`. El indicador SHALL ser decorativo y NO SHALL aportar contenido semántico.
+Cada `<summary>` SHALL ocultar el marcador nativo (triángulo) y SHALL mostrar un indicador de despliegue basado en `ChevronDown` de `@lucide/astro` (paquete migrado) que rota al abrir la pregunta, con transición desactivada bajo `prefers-reduced-motion: reduce`. El indicador SHALL ser decorativo y NO SHALL aportar contenido semántico.
 
 #### Scenario: Sin marcador nativo
 
@@ -117,7 +117,7 @@ La sección SHALL usar el copy fijado. h2: "Preguntas frecuentes"; subcopy: "Pre
 
 ### Requirement: Presupuesto de JavaScript y build
 
-La sección SHALL añadir 0 JavaScript: sin islas, sin scripts y sin `client:*`. La carga inicial SHALL mantener exactamente los 3 scripts inline existentes (navbar, loader de directiva y runtime de islas) que suman menos de 10 KB. NO SHALL añadirse dependencias y `global.css` NO SHALL modificarse. `pnpm astro check` SHALL terminar con 0 errores y `pnpm build` SHALL completar.
+La sección SHALL añadir 0 JavaScript propio: sin islas, sin scripts y sin `client:*`; la capa global de animación puede animar su entrada de forma sutil sin añadir scripts a la sección. La carga inicial SHALL mantener exactamente los 3 scripts inline existentes (navbar, loader de directiva y runtime de islas) que suman menos de 10 KB. NO SHALL añadirse dependencias nuevas (la migración a `@lucide/astro` ya está versionada) y `global.css` PUEDE ganar utilidades del sistema Precision Instrument manteniendo los 6 tokens. `pnpm astro check` SHALL terminar con 0 errores y `pnpm build` SHALL completar.
 
 #### Scenario: Cero JS nuevo
 
@@ -127,11 +127,11 @@ La sección SHALL añadir 0 JavaScript: sin islas, sin scripts y sin `client:*`.
 #### Scenario: Verificaciones limpias
 
 - **WHEN** se ejecutan `pnpm astro check` y `pnpm build`
-- **THEN** el type-check reporta 0 errores, el build completa y `global.css` no tiene cambios
+- **THEN** el type-check reporta 0 errores, el build completa y los 6 tokens conservan sus valores
 
 ### Requirement: Integración y verificación por inspección
 
-`index.astro` SHALL montar la sección inmediatamente después de la del checklist. El change SHALL verificarse por inspección directa del build (sin levantar preview): `id="faq"` ×1, `href="#faq"` ×2, `<details` ×5, `name="faq"` ×5, `<summary` ×5, 3 scripts inline (4,997 B), CSS construido con la regla de rotación del chevron para `[open]` y `global.css` sin cambios. Las comprobaciones visuales (render del accordion, operación por teclado y foco visible, degradación pre-2024 opcional) SHALL registrarse como verificaciones humanas pendientes del dueño.
+`index.astro` SHALL montar la sección inmediatamente después de la del checklist. El change SHALL verificarse por inspección directa del build (sin levantar preview): `id="faq"` ×1, `href="#faq"` ×2, `<details` ×5, `name="faq"` ×5, `<summary` ×5, 3 scripts inline y CSS construido con la regla de rotación del chevron para `[open]` y las utilidades del rediseño; los 6 tokens conservan sus valores. Las comprobaciones visuales (render del accordion, operación por teclado y foco visible, degradación pre-2024 opcional) SHALL registrarse como verificaciones humanas pendientes del dueño.
 
 #### Scenario: Inspección del dist
 
@@ -142,3 +142,17 @@ La sección SHALL añadir 0 JavaScript: sin islas, sin scripts y sin `client:*`.
 
 - **WHEN** el dueño revise la página en un navegador real
 - **THEN** confirma el render del accordion, la operación por teclado con foco visible y, opcionalmente, la degradación independiente en un navegador pre-2024
+
+### Requirement: Rediseño Precision Instrument del accordion
+
+La sección SHALL adoptar el tratamiento de "acordeón técnico" del diseño aprobado: banda blanca con reglas full-bleed del sistema Precision Instrument y filas del accordion con hairlines reforzados. La sección NO SHALL incluir texturas, corner marks ni CTA propio, y las 5 preguntas y respuestas NO SHALL alterarse.
+
+#### Scenario: Acordeón técnico aplicado
+
+- **WHEN** se inspecciona la sección construida
+- **THEN** las reglas full-bleed y los hairlines del accordion están presentes sin texturas ni CTA
+
+#### Scenario: Copy intacto
+
+- **WHEN** se revisan las 5 filas
+- **THEN** preguntas y respuestas coinciden verbatim con el contenido existente
