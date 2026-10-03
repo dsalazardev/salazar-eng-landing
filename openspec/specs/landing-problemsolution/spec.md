@@ -106,12 +106,17 @@ La sección SHALL montarse en la página inmediatamente después del stackstrip 
 
 ### Requirement: Rediseño Precision Instrument del ledger de diagnóstico
 
-La sección SHALL adoptar el tratamiento de "matriz de diagnóstico" del diseño aprobado: reglas full-bleed del sistema Precision Instrument, etiquetas técnicas de resolución en las respuestas (anotaciones decorativas aceptadas) y la textura blueprint existente conservada. Las 3 citas y las 3 respuestas NO SHALL alterarse y NO SHALL añadirse iconos, badges, flechas ni CTA.
+La sección SHALL conservar el tratamiento de "matriz de diagnóstico" del diseño aprobado: reglas full-bleed del sistema Precision Instrument y la textura blueprint existente, sin etiquetas de resolución decorativas (las etiquetas `RESOLUCIÓN 01/02/03` quedan eliminadas). Las 3 citas y las 3 respuestas NO SHALL alterarse y NO SHALL añadirse iconos, badges, flechas ni CTA.
 
 #### Scenario: Matriz de diagnóstico aplicada
 
 - **WHEN** se inspecciona la sección construida
-- **THEN** las reglas full-bleed y las etiquetas técnicas decorativas de resolución están presentes sobre la estructura de 3 pares
+- **THEN** las reglas full-bleed están presentes sobre la estructura de 3 pares y no hay etiquetas de resolución
+
+#### Scenario: Sin etiquetas de resolución
+
+- **WHEN** se busca en el HTML construido de la sección
+- **THEN** la cadena "RESOLUCIÓN" no aparece
 
 #### Scenario: Copy y no-añadidos intactos
 

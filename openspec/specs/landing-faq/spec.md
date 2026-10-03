@@ -145,12 +145,17 @@ La sección SHALL añadir 0 JavaScript propio: sin islas, sin scripts y sin `cli
 
 ### Requirement: Rediseño Precision Instrument del accordion
 
-La sección SHALL adoptar el tratamiento de "acordeón técnico" del diseño aprobado: banda blanca con reglas full-bleed del sistema Precision Instrument y filas del accordion con hairlines reforzados. La sección NO SHALL incluir texturas, corner marks ni CTA propio, y las 5 preguntas y respuestas NO SHALL alterarse.
+La sección SHALL conservar el tratamiento de "acordeón técnico" del diseño aprobado: banda blanca con reglas full-bleed del sistema Precision Instrument y filas del accordion con hairlines reforzados. La sección NO SHALL incluir texturas, corner marks, CTA propio ni metadatos de instrumento (la etiqueta `INDEX // FAQ_05` queda eliminada), y las 5 preguntas y respuestas NO SHALL alterarse.
 
 #### Scenario: Acordeón técnico aplicado
 
 - **WHEN** se inspecciona la sección construida
-- **THEN** las reglas full-bleed y los hairlines del accordion están presentes sin texturas ni CTA
+- **THEN** las reglas full-bleed y los hairlines del accordion están presentes sin texturas, corner marks ni CTA
+
+#### Scenario: Sin metadatos de instrumento
+
+- **WHEN** se busca en el HTML construido de la sección
+- **THEN** las cadenas `INDEX // FAQ_05` y `FAQ_05` no aparecen
 
 #### Scenario: Copy intacto
 
