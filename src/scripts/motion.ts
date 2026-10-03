@@ -3,7 +3,7 @@
  *
  * Política (AGENTS.md §04 / design.md D3):
  * - Módulo externo diferido; nunca inline ni bloqueante.
- * - Hooks declarativos `data-motion="fade|draw|count|stack-power|stack-message"`.
+ * - Hooks declarativos `data-motion="fade|draw|count|stack-power"`.
  * - `stack-power` delega en un chunk perezoso (`motion-stack.ts`).
  * - Duraciones 150–250 ms, easing de salida suave.
  * - Solo `transform` y `opacity`.
@@ -41,16 +41,14 @@ if (!reduceMotion.matches) {
   const drawEls = document.querySelectorAll<HTMLElement>('[data-motion~="draw"]');
   const countEls = document.querySelectorAll<HTMLElement>('[data-motion~="count"]');
   const stackEls = document.querySelectorAll<HTMLElement>('[data-motion~="stack-power"]');
-  const stackMessageEls = document.querySelectorAll<HTMLElement>('[data-motion~="stack-message"]');
 
   // Estado inicial solo cuando JS está activo: si el módulo no corre,
   // el contenido permanece visible (progressive enhancement).
   utils.set(fadeEls, { opacity: 0, translateY: 12 });
   utils.set(drawEls, { scaleX: 0, transformOrigin: 'left center' });
   for (const grid of stackEls) {
-    utils.set(grid.querySelectorAll<HTMLElement>(':scope > div'), { opacity: 0, y: 16 });
+    utils.set(grid.querySelectorAll<HTMLElement>(':scope li'), { opacity: 0, y: 20 });
   }
-  utils.set(stackMessageEls, { opacity: 0 });
 
   const observer = new IntersectionObserver(
     async (entries) => {
@@ -74,9 +72,8 @@ if (!reduceMotion.matches) {
             const { initStackMotion } = await import('./motion-stack');
             initStackMotion();
           } catch {
-            // Fallback: si el chunk no carga, mostrar el contenido en su estado final.
-            utils.set(el.querySelectorAll<HTMLElement>(':scope > div'), { opacity: 1, y: 0 });
-            utils.set(stackMessageEls, { opacity: 1 });
+            // Fallback: si el chunk no carga, mostrar las celdas en su estado final.
+            utils.set(el.querySelectorAll<HTMLElement>(':scope li'), { opacity: 1, y: 0 });
           }
         }
       }
