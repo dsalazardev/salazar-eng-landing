@@ -27,11 +27,11 @@
 
 ## 4. Animaciones Anime.js (por tipo)
 
-- [ ] 4.1 Entradas fade+rise: añadir hooks `data-motion="fade"` a los bloques below-the-fold (nunca al `h1` del hero); verificar con `pnpm build` e inspección (hooks presentes, `h1` sin hook) y pasada humana del efecto
-- [ ] 4.2 Trazo de hairlines: hooks `data-motion="draw"` en reglas/retícula decorativas; verificar por inspección (hooks en elementos decorativos, no en contenido) y pasada humana
-- [ ] 4.3 Hover de cards y CTAs: hover sutil (tono de borde/elevación mínima, transición de CTA) sin layout shift; verificar por inspección del CSS y pasada humana de hover
-- [ ] 4.4 Conteo de métricas: conteo único al entrar en viewport, terminando exactamente en los valores reales; verificar con pasada humana (métricas cuentan una vez y aterrizan en los valores verbatim)
-- [ ] 4.5 Movimiento reducido: verificar el guard `prefers-reduced-motion` (matchMedia → estado final visible, sin animaciones); verificar por inspección del módulo y pasada humana con la preferencia activada
+- [x] 4.1 Entradas fade+rise: añadir hooks `data-motion="fade"` a los bloques below-the-fold (nunca al `h1` del hero); verificar con `pnpm build` e inspección (hooks presentes, `h1` sin hook) y pasada humana del efecto
+- [x] 4.2 Trazo de hairlines: hooks `data-motion="draw"` en reglas/retícula decorativas; verificar por inspección (hooks en elementos decorativos, no en contenido) y pasada humana
+- [x] 4.3 Hover de cards y CTAs: hover sutil (tono de borde/elevación mínima, transición de CTA) sin layout shift; verificar por inspección del CSS y pasada humana de hover
+- [x] 4.4 Conteo de métricas: conteo único al entrar en viewport, terminando exactamente en los valores reales; verificar con pasada humana (métricas cuentan una vez y aterrizan en los valores verbatim)
+- [x] 4.5 Movimiento reducido: verificar el guard `prefers-reduced-motion` (matchMedia → estado final visible, sin animaciones); verificar por inspección del módulo y pasada humana con la preferencia activada
 
 ## 5. Verificación de aceptación
 

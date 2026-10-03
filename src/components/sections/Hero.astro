@@ -73,19 +73,20 @@ import SectionLabel from '../ui/SectionLabel.astro';
   </div>
 
   {/* Franja de lecturas de instrumento — valores reales del contenido */}
-  <div class="mt-12 border-t border-line lg:col-span-12 lg:mt-16" aria-hidden="true">
+  <div class="mt-12 lg:col-span-12 lg:mt-16" aria-hidden="true">
+    <div data-motion="draw" class="border-t border-line"></div>
     <dl class="grid grid-cols-1 sm:grid-cols-3">
       <div class="flex items-baseline gap-3 py-5 sm:pr-8">
         <dt class="tech-label">SLA EN PRODUCCIÓN</dt>
-        <dd class="ml-auto font-mono text-2xl font-bold tracking-tight text-navy-900">&lt;500 ms</dd>
+        <dd class="ml-auto font-mono text-2xl font-bold tracking-tight text-navy-900"><span data-motion="count" data-count-to="500" data-count-prefix="<" data-count-suffix=" ms" data-count-decimals="0">&lt;500 ms</span></dd>
       </div>
       <div class="metric-divider flex items-baseline gap-3 py-5 sm:px-8">
         <dt class="tech-label">IA EN PRODUCCIÓN</dt>
-        <dd class="ml-auto font-mono text-2xl font-bold tracking-tight text-navy-900">F1 0.99</dd>
+        <dd class="ml-auto font-mono text-2xl font-bold tracking-tight text-navy-900"><span data-motion="count" data-count-to="0.99" data-count-prefix="F1 " data-count-decimals="2">F1 0.99</span></dd>
       </div>
       <div class="metric-divider flex items-baseline gap-3 py-5 sm:pl-8">
         <dt class="tech-label">RESPUESTA</dt>
-        <dd class="ml-auto font-mono text-2xl font-bold tracking-tight text-navy-900">&lt;24 h</dd>
+        <dd class="ml-auto font-mono text-2xl font-bold tracking-tight text-navy-900"><span data-motion="count" data-count-to="24" data-count-prefix="<" data-count-suffix=" h" data-count-decimals="0">&lt;24 h</span></dd>
       </div>
     </dl>
   </div>
