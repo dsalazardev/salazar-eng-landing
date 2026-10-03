@@ -1,4 +1,5 @@
-@import "tailwindcss";
+@import "tailwindcss" source(none);
+@source "../";
 
 @theme {
   --color-navy-900: #0B2545;
@@ -50,4 +51,40 @@
 .bg-dot-pattern {
   background-image: radial-gradient(rgba(11, 37, 69, 0.15) 1px, transparent 1px);
   background-size: 16px 16px;
+}
+
+/* ==========================================
+   Precision Instrument — utilidades del sistema
+   (solo tokens existentes; sin sombras ni gradientes)
+   ========================================== */
+
+/* Retícula de instrumentación (16px, trazo fino) */
+.bg-instrument-grid {
+  background-size: 16px 16px;
+  background-image:
+    linear-gradient(to right, rgba(11, 37, 69, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(11, 37, 69, 0.04) 1px, transparent 1px);
+}
+
+/* Hairline vertical para franjas de métricas */
+.metric-divider {
+  border-left: 1px solid var(--color-line);
+}
+
+/* Anotación técnica mono (decorativa) */
+.tech-label {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-steel-500);
+}
+
+/* Hover de instrumento para cards (solo borde/tono, sin sombras) */
+.card-instrument {
+  transition: border-color 180ms ease-out, background-color 180ms ease-out;
+}
+
+.card-instrument:hover {
+  border-color: rgba(11, 37, 69, 0.3);
 }

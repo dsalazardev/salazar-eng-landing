@@ -7,8 +7,8 @@
 
 ## 2. Base del sistema (utilidades + módulo de motion)
 
-- [ ] 2.1 Añadir a `src/styles/global.css` las utilidades del sistema Precision Instrument (reglas full-bleed, retícula de instrumentación, hairlines de métricas, anotación mono) usando solo los 6 tokens, sin `box-shadow` ni gradientes; verificar con `pnpm build` e inspección del CSS construido (utilidades presentes, tokens intactos, sin sombras/gradientes)
-- [ ] 2.2 Crear el módulo único de animación `src/scripts/motion.ts` (hooks `data-motion`, IntersectionObserver de una pasada, guard `prefers-reduced-motion` con `matchMedia`, duraciones 150–250 ms, solo `transform`/`opacity`, conteo una vez) y montarlo desde `BaseLayout.astro` como script de módulo externo; verificar con `pnpm astro check` (0 errores) y `pnpm build` (chunk externo hasheado, no inline)
+- [x] 2.1 Añadir a `src/styles/global.css` las utilidades del sistema Precision Instrument (reglas full-bleed, retícula de instrumentación, hairlines de métricas, anotación mono) usando solo los 6 tokens, sin `box-shadow` ni gradientes; verificar con `pnpm build` e inspección del CSS construido (utilidades presentes, tokens intactos, sin sombras/gradientes)
+- [x] 2.2 Crear el módulo único de animación `src/scripts/motion.ts` (hooks `data-motion`, IntersectionObserver de una pasada, guard `prefers-reduced-motion` con `matchMedia`, duraciones 150–250 ms, solo `transform`/`opacity`, conteo una vez) y montarlo desde `BaseLayout.astro` como script de módulo externo; verificar con `pnpm astro check` (0 errores) y `pnpm build` (chunk externo hasheado, no inline)
 
 ## 3. Rediseño por sección (orden narrativo)
 
