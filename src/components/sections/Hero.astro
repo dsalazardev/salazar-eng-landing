@@ -34,10 +34,6 @@ import SectionLabel from '../ui/SectionLabel.astro';
         Ver casos de estudio →
       </Button>
     </div>
-
-    <p class="mt-6 font-mono text-xs tracking-wider text-steel-500 uppercase">
-      Respuesta en menos de 24 h · Remoto LATAM · Internacional
-    </p>
   </div>
 
   <div class="lg:col-span-5" aria-hidden="true">
@@ -49,13 +45,6 @@ import SectionLabel from '../ui/SectionLabel.astro';
       <span class="absolute top-3 right-3 font-mono text-xs text-steel-500">+</span>
       <span class="absolute bottom-3 left-3 font-mono text-xs text-steel-500">+</span>
       <span class="absolute bottom-3 right-3 font-mono text-xs text-steel-500">+</span>
-
-      <span class="absolute top-3 left-8 font-mono text-xs tracking-wider text-steel-500 uppercase">
-        INSTRUMENT #01 // ISOTIPO SE
-      </span>
-      <span class="absolute right-8 bottom-3 font-mono text-xs tracking-wider text-steel-500 uppercase">
-        GRID 30
-      </span>
 
       <div class="relative flex h-full items-center justify-center">
         {/* TODO: reemplazar el isotipo PNG por el SVG definitivo cuando el dueño exporte el vectorial (ARCHIVOS/LOGO/AI/ → Illustrator) */}
@@ -73,11 +62,11 @@ import SectionLabel from '../ui/SectionLabel.astro';
   </div>
 
   {/* Franja de lecturas de instrumento — valores reales del contenido */}
-  <div class="mt-12 lg:col-span-12 lg:mt-16" aria-hidden="true">
+  <div class="mt-12 lg:col-span-12 lg:mt-16">
     <div data-motion="draw" class="border-t border-line"></div>
     <dl class="grid grid-cols-1 sm:grid-cols-3">
       <div class="flex items-baseline gap-3 py-5 sm:pr-8">
-        <dt class="tech-label">SLA EN PRODUCCIÓN</dt>
+        <dt class="tech-label">LATENCIA EN PRODUCCIÓN</dt>
         <dd class="ml-auto font-mono text-2xl font-bold tracking-tight text-navy-900"><span data-motion="count" data-count-to="500" data-count-prefix="<" data-count-suffix=" ms" data-count-decimals="0">&lt;500 ms</span></dd>
       </div>
       <div class="metric-divider flex items-baseline gap-3 py-5 sm:px-8">
