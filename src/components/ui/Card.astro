@@ -5,9 +5,10 @@ import { twMerge } from 'tailwind-merge';
 interface Props {
   interactive?: boolean;
   class?: string;
+  [key: string]: unknown;
 }
 
-const { interactive = false, class: className } = Astro.props;
+const { interactive = false, class: className, ...rest } = Astro.props;
 
 const classes = twMerge(
   clsx([
@@ -18,4 +19,4 @@ const classes = twMerge(
 );
 ---
 
-<div class={classes}><slot /></div>
+<div class={classes} {...rest}><slot /></div>

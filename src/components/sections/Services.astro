@@ -82,7 +82,7 @@ const cardClass = (index: number) =>
     <div class="mt-10 grid gap-6 lg:grid-cols-2 lg:gap-8">
       {
         services.map((service, index) => (
-          <Card class={cardClass(index)}>
+          <Card class={cardClass(index)} data-motion="fade-scale" data-motion-delay={String(index * 90)}>
             <p class="font-mono text-xs tracking-wider text-steel-500 uppercase">{service.code}</p>
             <h3 class={`mt-2 text-lg font-bold text-navy-900${index === 0 ? ' sm:text-xl' : ''}`}>
               {service.title}

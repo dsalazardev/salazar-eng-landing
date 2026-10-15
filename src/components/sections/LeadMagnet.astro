@@ -24,7 +24,7 @@ const endpoint = import.meta.env.PUBLIC_LEAD_ENDPOINT ?? '';
       </div>
 
       <div class="lg:col-span-6">
-        <Card class="p-6 lg:p-8">
+        <Card class="p-6 lg:p-8" data-motion="fade-scale">
           <ContactForm client:visible endpoint={endpoint} />
           <noscript>
             <p class="mt-4 text-sm text-steel-500">

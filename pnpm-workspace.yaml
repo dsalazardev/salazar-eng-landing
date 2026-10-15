@@ -7,5 +7,11 @@ allowBuilds:
   workerd: true
 
 minimumReleaseAgeExclude:
-  - '@astrojs/cloudflare@14.3.3'
+  - '@astrojs/cloudflare@14.3.3 || 14.4.0'
   - wrangler@4.136.3
+  - '@astrojs/internal-helpers@0.13.0'
+  - '@astrojs/markdown-satteri@0.4.4'
+  - '@astrojs/prism@4.1.0'
+  - '@astrojs/react@7.1.0'
+  - '@astrojs/telemetry@3.4.0'
+  - astro@7.4.0

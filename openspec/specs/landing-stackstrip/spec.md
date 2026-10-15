@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Define la franja de validación técnica posterior al hero: encabezado con el stack de producción del brief, cinta continua CSS sin JavaScript con pausas accesibles y las 16 tecnologías del estudio.
+Define la franja de validación técnica posterior al hero: su encabezado con la etiqueta de sección y el subtítulo del stack, y la cuadrícula técnica de 4 categorías con las 16 tecnologías del estudio presentadas como celdas enmarcadas del sistema Precision Instrument y animadas por la capa global de motion.
 
 ## Requirements
 

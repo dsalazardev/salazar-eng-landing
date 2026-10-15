@@ -108,7 +108,11 @@ const linkClass =
     <div class="mt-10 flex flex-col gap-6 lg:gap-8">
       {
         cases.map((item, index) => (
-          <Card class="grid gap-6 card-instrument lg:grid-cols-12 lg:gap-x-10">
+          <Card
+            class="grid gap-6 card-instrument lg:grid-cols-12 lg:gap-x-10"
+            data-motion="fade-scale"
+            data-motion-delay={String(index * 90)}
+          >
             <h3 class={headingClass(index)}>
               {item.name} — {item.challenge}
             </h3>

@@ -13,8 +13,8 @@
     "generate-types": "wrangler types"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^14.3.3",
-    "@astrojs/react": "^6.0.6",
+    "@astrojs/cloudflare": "^14.4.0",
+    "@astrojs/react": "^7.1.0",
     "@fontsource-variable/jetbrains-mono": "^5.3.0",
     "@fontsource-variable/manrope": "^5.3.0",
     "@lucide/astro": "^1.50.0",
@@ -22,7 +22,7 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "animejs": "^4.5.0",
-    "astro": "^7.3.3",
+    "astro": "^7.4.0",
     "clsx": "^2.1.1",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
@@ -36,6 +36,6 @@
     "@astrojs/check": "^0.9.10",
     "sharp": "^0.35.4",
     "typescript": "^6.0.3",
-    "wrangler": "^4.136.3"
+    "wrangler": "^4.151.0"
   }
 }

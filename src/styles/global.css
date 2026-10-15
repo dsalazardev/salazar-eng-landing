@@ -97,7 +97,7 @@
 
 /* Hover de instrumento para cards (solo borde/tono, sin sombras) */
 .card-instrument {
-  transition: border-color 180ms ease-out, background-color 180ms ease-out;
+  transition: border-color 220ms ease-out, background-color 220ms ease-out;
 }
 
 .card-instrument:hover {
